@@ -103,7 +103,10 @@ SourceEntity *--* DesignObject       (through EntityMapping)
 DesignObject *--* DesignObject       (through DesignRelationship)
 Drawing 1--* Layout
 Layout 1--* Viewport
+Drawing 1--* ProfileView
+Viewport *--* ProfileView            (profile views shown)
 Layout 1--0..1 Sheet
+Sheet 1--* CoverageIntent
 Sheet 1--* SheetRendition
 Document 1--* SheetRendition
 Viewport 1--* PresentationInstance
