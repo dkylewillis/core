@@ -45,8 +45,8 @@ A **DesignObject** adds engineering meaning to one or more SourceEntities. It st
 
 Creation prefers the most reliable available method:
 
-1. **Deterministic native mapping** — for example, a Civil 3D pipe maps directly to a storm-pipe DesignObject.
-2. **Rule-based inference** — for example, a polyline on a known utility layer is classified by an explicit project rule.
+1. **Deterministic native mapping** — for example, a Civil 3D pipe maps directly to a gravity-pipe DesignObject.
+2. **Rule-based inference** — for example, a polyline on a known utility layer is classified by an explicit project rule, or a gravity pipe is classified as storm or sanitary by its network name.
 3. **AI inference as a fallback** — only when structured data and rules cannot determine the meaning. AI-created mappings carry method, confidence, and supporting provenance.
 
 AI inference can be disabled for an import. A snapshot records whether AI was enabled and, if so, the model and version used, so an import without AI is fully reproducible from its `.corex`.
