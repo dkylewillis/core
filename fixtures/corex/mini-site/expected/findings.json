@@ -1,0 +1,211 @@
+{
+  "description": "Expected review results with profiles/default.rule-profile.json. Findings and observations are exhaustive: an implementation must produce exactly these, matched on rule, code, and subject.",
+  "profile": "profiles/default.rule-profile.json",
+  "findings": [
+    {
+      "rule": "core.source-reference",
+      "code": "xref-not-found",
+      "severity": "high",
+      "basis": "native",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5A2"
+      },
+      "facts": {
+        "host": "C301",
+        "blockName": "C-UTIL",
+        "savedPath": "..\\Xref\\C-UTIL.dwg",
+        "resolvedPath": null,
+        "status": "not-found"
+      }
+    },
+    {
+      "rule": "core.source-reference",
+      "code": "data-reference-source-not-found",
+      "severity": "high",
+      "basis": "native",
+      "subject": {
+        "drawing": "C501",
+        "handle": "6C0"
+      },
+      "facts": {
+        "host": "C501",
+        "shortcut": "EG",
+        "objectType": "surface",
+        "sourcePath": "C:\\Projects\\MiniSite\\Surfaces\\C-SURF.dwg",
+        "status": "source-not-found"
+      }
+    },
+    {
+      "rule": "core.network-connectivity",
+      "code": "pipe-end-unconnected",
+      "severity": "medium",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "114"
+      },
+      "facts": {
+        "pipe": "P-4",
+        "end": "start",
+        "point": [
+          2150000.0,
+          1380300.0
+        ]
+      }
+    },
+    {
+      "rule": "core.network-connectivity",
+      "code": "structure-without-pipes",
+      "severity": "medium",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "105"
+      },
+      "facts": {
+        "structure": "DI-3"
+      }
+    },
+    {
+      "rule": "core.sheet-coverage",
+      "code": "object-not-visible-on-sheet",
+      "severity": "medium",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "102"
+      },
+      "facts": {
+        "sheet": "C3.01",
+        "designObject": "DI-2",
+        "viewports": [
+          {
+            "viewport": {
+              "drawing": "C301",
+              "handle": "5E1"
+            },
+            "inside": true,
+            "visible": false,
+            "reasons": [
+              "style-component-layer-frozen-in-viewport"
+            ],
+            "effectiveLayer": "C-STRM|C-STRM-STRC-C"
+          }
+        ]
+      }
+    },
+    {
+      "rule": "core.annotation-vs-model",
+      "code": "annotation-value-mismatch",
+      "severity": "high",
+      "basis": "rule",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5C1"
+      },
+      "facts": {
+        "text": "18\" RCP @ 0.50%",
+        "linkedTo": "P-2",
+        "linkMethod": "leader-proximity",
+        "mismatches": [
+          {
+            "field": "diameter",
+            "stated": 18,
+            "model": 24,
+            "units": "in"
+          },
+          {
+            "field": "slope",
+            "stated": 0.5,
+            "model": 0.7071,
+            "units": "%",
+            "tolerance": 0.005
+          }
+        ]
+      }
+    },
+    {
+      "rule": "core.annotation-vs-model",
+      "code": "annotation-value-mismatch",
+      "severity": "high",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "121"
+      },
+      "facts": {
+        "text": "24\" HDPE @ 1.50%",
+        "linkedTo": "P-3",
+        "linkMethod": "label-annotates",
+        "textOverridden": true,
+        "mismatches": [
+          {
+            "field": "material",
+            "stated": "HDPE",
+            "model": "RCP",
+            "modelRaw": "Reinforced Concrete"
+          }
+        ]
+      }
+    }
+  ],
+  "observations": [
+    {
+      "rule": "core.source-reference",
+      "code": "xref-resolved-by-fallback",
+      "basis": "native",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5A0"
+      },
+      "facts": {
+        "savedPath": "C:\\Projects\\Old\\MiniSite\\Xref\\C-BASE.dwg",
+        "resolvedPath": "C:\\Projects\\MiniSite\\Xref\\C-BASE.dwg",
+        "resolvedBy": "support-search-path"
+      }
+    }
+  ],
+  "mustNotReport": [
+    {
+      "rule": "core.annotation-vs-model",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5C2"
+      },
+      "why": "Callout matches P-3 (24 in, RCP, 1.50%)."
+    },
+    {
+      "rule": "core.annotation-vs-model",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "120"
+      },
+      "why": "Civil 3D label text is not overridden."
+    },
+    {
+      "rule": "core.sheet-coverage",
+      "subject": {
+        "drawing": "C-BASE",
+        "handle": "2B1"
+      },
+      "why": "Hydrant is hidden but is not a DesignObject type in coverage scope."
+    },
+    {
+      "rule": "core.source-reference",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "1F0"
+      },
+      "why": "Overlay not loaded through a parent is normal AutoCAD behavior, not a broken reference."
+    },
+    {
+      "rule": "core.network-connectivity",
+      "subject": {
+        "drawing": "C501",
+        "handle": "6B4"
+      },
+      "why": "Data-shortcut reference parts map to the source DesignObjects and are not checked twice."
+    }
+  ]
+}

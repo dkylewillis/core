@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COREX common definitions",
+  "$defs": {
+    "drawingId": {
+      "description": "Package-local drawing identifier, unique within one .corex package. Conventionally the DWG file stem.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "handle": {
+      "description": "AutoCAD object handle in uppercase hexadecimal, unique within one drawing.",
+      "type": "string",
+      "pattern": "^[0-9A-F]{1,16}$"
+    },
+    "entityRef": {
+      "description": "Reference to an object in any drawing of the package.",
+      "type": "object",
+      "required": ["drawing", "handle"],
+      "additionalProperties": false,
+      "properties": {
+        "drawing": { "$ref": "#/$defs/drawingId" },
+        "handle": { "$ref": "#/$defs/handle" }
+      }
+    },
+    "guid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "point2": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "point3": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "vector3": {
+      "$ref": "#/$defs/point3"
+    },
+    "matrix4": {
+      "description": "AutoCAD Matrix3d as 16 numbers in row-major order.",
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 16,
+      "maxItems": 16
+    },
+    "polygon2": {
+      "description": "Closed 2D boundary; the last vertex is not repeated.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/point2" },
+      "minItems": 3
+    },
+    "linearUnits": {
+      "description": "Normalized linear unit. 'us-survey-feet' and 'feet' (international) are distinct.",
+      "enum": [
+        "unitless",
+        "inches",
+        "feet",
+        "us-survey-feet",
+        "miles",
+        "millimeters",
+        "centimeters",
+        "meters",
+        "kilometers",
+        "other"
+      ]
+    },
+    "units": {
+      "type": "object",
+      "required": ["insunits", "linear"],
+      "additionalProperties": false,
+      "properties": {
+        "insunits": {
+          "description": "Raw INSUNITS system variable value.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "linear": { "$ref": "#/$defs/linearUnits" }
+      }
+    },
+    "resolution": {
+      "description": "How a referenced file was found.",
+      "type": "object",
+      "required": ["savedPath", "resolvedPath", "resolvedBy", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "savedPath": { "type": "string" },
+        "resolvedPath": { "type": ["string", "null"] },
+        "resolvedBy": {
+          "enum": ["saved-path", "relative-to-host", "support-search-path", "project-folder", "none"]
+        },
+        "status": {
+          "enum": ["resolved", "unloaded", "unreferenced", "not-found", "unresolved"]
+        }
+      }
+    },
+    "ocs": {
+      "description": "Object coordinate system of a planar entity.",
+      "type": "object",
+      "required": ["normal", "elevation"],
+      "additionalProperties": false,
+      "properties": {
+        "normal": { "$ref": "#/$defs/vector3" },
+        "elevation": { "type": "number" }
+      }
+    },
+    "geometry": {
+      "description": "Source geometry in the coordinate space stated by each variant. Analytic curves are never tessellated.",
+      "oneOf": [
+        { "$ref": "#/$defs/geomPoint" },
+        { "$ref": "#/$defs/geomLine" },
+        { "$ref": "#/$defs/geomPolyline" },
+        { "$ref": "#/$defs/geomPolyline3d" },
+        { "$ref": "#/$defs/geomArc" },
+        { "$ref": "#/$defs/geomCircle" },
+        { "$ref": "#/$defs/geomTin" },
+        { "$ref": "#/$defs/geomExternal" }
+      ]
+    },
+    "geomPoint": {
+      "type": "object",
+      "required": ["type", "position"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "point" },
+        "position": { "$ref": "#/$defs/point3", "description": "WCS of the owning space." }
+      }
+    },
+    "geomLine": {
+      "type": "object",
+      "required": ["type", "start", "end"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "line" },
+        "start": { "$ref": "#/$defs/point3", "description": "WCS of the owning space." },
+        "end": { "$ref": "#/$defs/point3" }
+      }
+    },
+    "geomPolyline": {
+      "description": "Lightweight polyline. Vertices are [x, y, bulge] in the entity's OCS.",
+      "type": "object",
+      "required": ["type", "ocs", "vertices", "closed"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "polyline" },
+        "ocs": { "$ref": "#/$defs/ocs" },
+        "vertices": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "closed": { "type": "boolean" }
+      }
+    },
+    "geomPolyline3d": {
+      "type": "object",
+      "required": ["type", "vertices", "closed"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "polyline3d" },
+        "vertices": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/point3" }
+        },
+        "closed": { "type": "boolean" }
+      }
+    },
+    "geomArc": {
+      "description": "Center in WCS of the owning space; angles in radians measured in the OCS defined by the normal.",
+      "type": "object",
+      "required": ["type", "center", "radius", "startAngle", "endAngle", "normal"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "arc" },
+        "center": { "$ref": "#/$defs/point3" },
+        "radius": { "type": "number", "exclusiveMinimum": 0 },
+        "startAngle": { "type": "number" },
+        "endAngle": { "type": "number" },
+        "normal": { "$ref": "#/$defs/vector3" }
+      }
+    },
+    "geomCircle": {
+      "type": "object",
+      "required": ["type", "center", "radius", "normal"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "circle" },
+        "center": { "$ref": "#/$defs/point3" },
+        "radius": { "type": "number", "exclusiveMinimum": 0 },
+        "normal": { "$ref": "#/$defs/vector3" }
+      }
+    },
+    "geomTin": {
+      "description": "Small TIN written inline. Large TINs use geomExternal.",
+      "type": "object",
+      "required": ["type", "vertices", "triangles"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "tin" },
+        "vertices": { "type": "array", "items": { "$ref": "#/$defs/point3" } },
+        "triangles": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0 },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        }
+      }
+    },
+    "geomExternal": {
+      "description": "Geometry stored in a CXB1 file inside the package.",
+      "type": "object",
+      "required": ["type", "path", "sha256", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "external" },
+        "path": { "type": "string", "pattern": "^geometry/" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "kind": { "enum": ["tin", "point-cloud", "mesh"] }
+      }
+    },
+    "quantity": {
+      "description": "A numeric value with its units as reported by the source.",
+      "type": "object",
+      "required": ["value", "units"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "units": { "type": "string" }
+      }
+    }
+  }
+}

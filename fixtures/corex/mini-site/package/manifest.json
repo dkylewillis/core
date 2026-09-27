@@ -1,0 +1,122 @@
+{
+  "schema": "corex.manifest/1",
+  "corexVersion": "1.0",
+  "exporter": {
+    "name": "hand-authored fixture",
+    "version": "0"
+  },
+  "host": {
+    "product": "Civil 3D",
+    "version": "2026",
+    "runtime": ".NET 8",
+    "mode": "fixture"
+  },
+  "exportedAt": "2026-09-27T12:00:00Z",
+  "project": {
+    "name": "MiniSite",
+    "root": "C:\\Projects\\MiniSite"
+  },
+  "startingPoint": {
+    "kind": "sheet-set",
+    "path": "C:\\Projects\\MiniSite\\MiniSite.dst"
+  },
+  "drawings": [
+    {
+      "id": "C301",
+      "path": "drawings/C301.json",
+      "sourcePath": "C:\\Projects\\MiniSite\\Sheets\\C301.dwg",
+      "sourceSha256": "bd61370ec9dbda2ad1e8a61918eb614a38b5a9ff317c2f9a846f6bec5e0343ee",
+      "fingerprintGuid": "31e3fa57-b1cd-5d23-9997-7ed5b921cba0"
+    },
+    {
+      "id": "C501",
+      "path": "drawings/C501.json",
+      "sourcePath": "C:\\Projects\\MiniSite\\Sheets\\C501.dwg",
+      "sourceSha256": "d9c6ef0a3157c9d764343bebc33c41fecfb208a8e606dcc6b27404334b640d0b",
+      "fingerprintGuid": "b1acdb3c-ca24-540e-9396-0f61a5e594b3"
+    },
+    {
+      "id": "C-BASE",
+      "path": "drawings/C-BASE.json",
+      "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-BASE.dwg",
+      "sourceSha256": "958dc535c7f114a382b62b553d367c8d6234acd75930b094a3766b18c0f1b256",
+      "fingerprintGuid": "ad3c11d1-d645-54b9-9b10-4026b3f5a237"
+    },
+    {
+      "id": "SURVEY",
+      "path": "drawings/SURVEY.json",
+      "sourcePath": "C:\\Projects\\MiniSite\\Survey\\SURVEY.dwg",
+      "sourceSha256": "c20893becff8edda10471cb921f973c09057730c5affd960fdc409434f17547a",
+      "fingerprintGuid": "6a231dd7-cf62-527e-9d6a-338f80edb0b4"
+    },
+    {
+      "id": "C-STRM",
+      "path": "drawings/C-STRM.json",
+      "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-STRM.dwg",
+      "sourceSha256": "bbd5637302e1cf1230237e7398f9065c19901298c866757b08f71c20c46a7831",
+      "fingerprintGuid": "108f5bf5-6f38-5ffc-a068-75f5a47b030c"
+    },
+    {
+      "id": "C-ALIGN",
+      "path": "drawings/C-ALIGN.json",
+      "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-ALIGN.dwg",
+      "sourceSha256": "65f0392525304742ebaae25585bf4a17cc5b22025794d7a14d19b8f49ac4b821",
+      "fingerprintGuid": "f2e09771-1ff4-5161-9ceb-0ccef03fdc7d"
+    }
+  ],
+  "shortcuts": "shortcuts/shortcuts.json",
+  "sheets": "sheets/sheets.json",
+  "geometry": [],
+  "dependencies": [
+    {
+      "from": "C301",
+      "to": "C-BASE",
+      "kind": "xref-attach",
+      "status": "resolved"
+    },
+    {
+      "from": "C301",
+      "to": "C-STRM",
+      "kind": "xref-attach",
+      "status": "resolved"
+    },
+    {
+      "from": "C301",
+      "to": null,
+      "toPath": "..\\Xref\\C-UTIL.dwg",
+      "kind": "xref-attach",
+      "status": "not-found"
+    },
+    {
+      "from": "C-BASE",
+      "to": "SURVEY",
+      "kind": "xref-attach",
+      "status": "resolved"
+    },
+    {
+      "from": "C-STRM",
+      "to": "C-BASE",
+      "kind": "xref-overlay",
+      "status": "resolved"
+    },
+    {
+      "from": "C501",
+      "to": "C-ALIGN",
+      "kind": "data-shortcut",
+      "status": "current"
+    },
+    {
+      "from": "C501",
+      "to": "C-STRM",
+      "kind": "data-shortcut",
+      "status": "current"
+    },
+    {
+      "from": "C501",
+      "to": null,
+      "toPath": "C:\\Projects\\MiniSite\\Surfaces\\C-SURF.dwg",
+      "kind": "data-shortcut",
+      "status": "source-not-found"
+    }
+  ]
+}

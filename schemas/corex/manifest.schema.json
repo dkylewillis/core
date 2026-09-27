@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COREX manifest",
+  "type": "object",
+  "required": ["schema", "corexVersion", "exporter", "host", "exportedAt", "project", "startingPoint", "drawings", "shortcuts", "sheets", "geometry", "dependencies"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "corex.manifest/1" },
+    "corexVersion": {
+      "description": "COREX format version. Minor versions add optional fields only.",
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "exporter": {
+      "type": "object",
+      "required": ["name", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "host": {
+      "description": "Autodesk product used for the export.",
+      "type": "object",
+      "required": ["product", "version", "runtime", "mode"],
+      "additionalProperties": false,
+      "properties": {
+        "product": { "type": "string" },
+        "version": { "type": "string" },
+        "runtime": { "type": "string" },
+        "mode": { "enum": ["interactive", "batch", "fixture"] }
+      }
+    },
+    "exportedAt": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "project": {
+      "type": "object",
+      "required": ["name", "root"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "root": { "type": "string", "description": "Project root folder on the exporting machine." }
+      }
+    },
+    "startingPoint": {
+      "type": "object",
+      "required": ["kind", "path"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["drawing", "folder", "sheet-set"] },
+        "path": { "type": "string" }
+      }
+    },
+    "drawings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "sourcePath", "sourceSha256", "fingerprintGuid"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/drawingId" },
+          "path": { "type": "string", "pattern": "^drawings/[^/]+\\.json$" },
+          "sourcePath": { "type": "string" },
+          "sourceSha256": { "$ref": "common.schema.json#/$defs/sha256" },
+          "fingerprintGuid": { "$ref": "common.schema.json#/$defs/guid" }
+        }
+      }
+    },
+    "shortcuts": { "enum": ["shortcuts/shortcuts.json", null] },
+    "sheets": { "enum": ["sheets/sheets.json", null] },
+    "geometry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "pattern": "^geometry/" },
+          "sha256": { "$ref": "common.schema.json#/$defs/sha256" },
+          "kind": { "enum": ["tin", "point-cloud", "mesh"] }
+        }
+      }
+    },
+    "dependencies": {
+      "description": "Direct dependencies between drawings, for quick inspection. Drawing files are authoritative.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "kind", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "$ref": "common.schema.json#/$defs/drawingId" },
+          "to": { "oneOf": [{ "$ref": "common.schema.json#/$defs/drawingId" }, { "type": "null" }] },
+          "toPath": { "type": "string" },
+          "kind": { "enum": ["xref-attach", "xref-overlay", "data-shortcut"] },
+          "status": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,524 @@
+{
+  "schema": "corex.drawing/1",
+  "id": "C301",
+  "file": {
+    "sourcePath": "C:\\Projects\\MiniSite\\Sheets\\C301.dwg",
+    "sizeBytes": 1000000,
+    "sha256": "bd61370ec9dbda2ad1e8a61918eb614a38b5a9ff317c2f9a846f6bec5e0343ee",
+    "lastSaved": "2026-09-20T15:00:00Z"
+  },
+  "fingerprintGuid": "31e3fa57-b1cd-5d23-9997-7ed5b921cba0",
+  "versionGuid": "5a3becf5-02a5-5452-82da-9cd593c0f023",
+  "savedBy": {
+    "product": "Civil 3D",
+    "version": "2026"
+  },
+  "units": {
+    "insunits": 2,
+    "linear": "feet"
+  },
+  "settings": {
+    "visretain": true
+  },
+  "civil": {
+    "coordinateSystemCode": "GA83-WF",
+    "drawingScale": 40.0,
+    "gridToGroundScale": null
+  },
+  "layers": [
+    {
+      "name": "0",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ANNO-TEXT",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ANNO-TTLB",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-VPRT",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-XREF",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-BASE|V-ROAD-EOP",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-BASE"
+    },
+    {
+      "name": "C-BASE|C-WATR-HYD",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-BASE"
+    },
+    {
+      "name": "SURVEY|V-CTRL",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "SURVEY"
+    },
+    {
+      "name": "C-STRM|C-STRM-PIPE",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-STRM"
+    },
+    {
+      "name": "C-STRM|C-STRM-STRC",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-STRM"
+    },
+    {
+      "name": "C-STRM|C-STRM-STRC-C",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-STRM"
+    },
+    {
+      "name": "C-STRM|C-STRM-LABL",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-STRM"
+    },
+    {
+      "name": "C-STRM|C-XREF",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-STRM"
+    }
+  ],
+  "blockDefinitions": [
+    {
+      "handle": "5B0",
+      "name": "TITLE-ARCH-D",
+      "kind": "block",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "handle": "5B1",
+      "name": "C-BASE",
+      "kind": "xref",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "handle": "5B2",
+      "name": "C-STRM",
+      "kind": "xref",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "handle": "5B3",
+      "name": "C-UTIL",
+      "kind": "xref",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "handle": "5C0",
+      "kind": "block-reference",
+      "class": "AcDbBlockReference",
+      "space": "paper",
+      "owner": "5D0",
+      "layer": "C-ANNO-TTLB",
+      "block": {
+        "definition": "5B0",
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scaleFactors": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation": 0.0,
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "attributes": [
+          {
+            "tag": "SHEETNO",
+            "value": "C3.01"
+          },
+          {
+            "tag": "TITLE",
+            "value": "STORM DRAINAGE PLAN"
+          },
+          {
+            "tag": "REV",
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "handle": "5C1",
+      "kind": "mleader",
+      "class": "AcDbMLeader",
+      "space": "paper",
+      "owner": "5D0",
+      "layer": "C-ANNO-TEXT",
+      "text": {
+        "contents": "18\" RCP @ 0.50%",
+        "plain": "18\" RCP @ 0.50%",
+        "location": [
+          18.75,
+          14.75,
+          0.0
+        ],
+        "height": 0.1,
+        "rotation": 0.0
+      },
+      "leader": {
+        "vertices": [
+          [
+            17.25,
+            13.75,
+            0.0
+          ],
+          [
+            18.75,
+            14.75,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "handle": "5C2",
+      "kind": "mleader",
+      "class": "AcDbMLeader",
+      "space": "paper",
+      "owner": "5D0",
+      "layer": "C-ANNO-TEXT",
+      "text": {
+        "contents": "24\" RCP @ 1.50%",
+        "plain": "24\" RCP @ 1.50%",
+        "location": [
+          17.5,
+          11.0,
+          0.0
+        ],
+        "height": 0.1,
+        "rotation": 0.0
+      },
+      "leader": {
+        "vertices": [
+          [
+            16.0,
+            10.0,
+            0.0
+          ],
+          [
+            17.5,
+            11.0,
+            0.0
+          ]
+        ]
+      }
+    }
+  ],
+  "xrefs": [
+    {
+      "handle": "5A0",
+      "blockName": "C-BASE",
+      "definition": "5B1",
+      "target": "C-BASE",
+      "attachment": "attach",
+      "resolution": {
+        "savedPath": "C:\\Projects\\Old\\MiniSite\\Xref\\C-BASE.dwg",
+        "resolvedPath": "C:\\Projects\\MiniSite\\Xref\\C-BASE.dwg",
+        "resolvedBy": "support-search-path",
+        "status": "resolved"
+      },
+      "space": "model",
+      "layer": "C-XREF",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaleFactors": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "unitScale": 1.0,
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "handle": "5A1",
+      "blockName": "C-STRM",
+      "definition": "5B2",
+      "target": "C-STRM",
+      "attachment": "attach",
+      "resolution": {
+        "savedPath": "..\\Xref\\C-STRM.dwg",
+        "resolvedPath": "C:\\Projects\\MiniSite\\Xref\\C-STRM.dwg",
+        "resolvedBy": "saved-path",
+        "status": "resolved"
+      },
+      "space": "model",
+      "layer": "C-XREF",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaleFactors": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "unitScale": 1.0,
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "handle": "5A2",
+      "blockName": "C-UTIL",
+      "definition": "5B3",
+      "target": null,
+      "attachment": "attach",
+      "resolution": {
+        "savedPath": "..\\Xref\\C-UTIL.dwg",
+        "resolvedPath": null,
+        "resolvedBy": "none",
+        "status": "not-found"
+      },
+      "space": "model",
+      "layer": "C-XREF",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaleFactors": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "unitScale": 1.0,
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "styles": [],
+  "layouts": [
+    {
+      "handle": "5D0",
+      "name": "C301",
+      "tabOrder": 1,
+      "paperUnits": "inches",
+      "titleBlock": {
+        "blockReference": "5C0",
+        "attributes": {
+          "SHEETNO": "C3.01",
+          "TITLE": "STORM DRAINAGE PLAN",
+          "REV": "0"
+        }
+      },
+      "viewports": [
+        {
+          "handle": "5E0",
+          "number": 1,
+          "isPaperSpaceView": true,
+          "on": true,
+          "centerPaper": [
+            18.0,
+            12.0
+          ],
+          "width": 36.0,
+          "height": 24.0
+        },
+        {
+          "handle": "5E1",
+          "number": 2,
+          "isPaperSpaceView": false,
+          "on": true,
+          "layer": "C-VPRT",
+          "centerPaper": [
+            16.0,
+            12.5
+          ],
+          "width": 30.0,
+          "height": 20.0,
+          "clipBoundary": null,
+          "view": {
+            "center": [
+              2150200.0,
+              1380100.0
+            ],
+            "target": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "height": 800.0,
+            "customScale": 0.025,
+            "twist": 0.0
+          },
+          "annotationScale": "1\" = 40'",
+          "frozenLayers": [
+            "C-STRM|C-STRM-STRC-C",
+            "C-BASE|C-WATR-HYD"
+          ]
+        }
+      ]
+    }
+  ]
+}

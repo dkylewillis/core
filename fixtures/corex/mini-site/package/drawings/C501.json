@@ -1,0 +1,470 @@
+{
+  "schema": "corex.drawing/1",
+  "id": "C501",
+  "file": {
+    "sourcePath": "C:\\Projects\\MiniSite\\Sheets\\C501.dwg",
+    "sizeBytes": 1000000,
+    "sha256": "d9c6ef0a3157c9d764343bebc33c41fecfb208a8e606dcc6b27404334b640d0b",
+    "lastSaved": "2026-09-20T15:00:00Z"
+  },
+  "fingerprintGuid": "b1acdb3c-ca24-540e-9396-0f61a5e594b3",
+  "versionGuid": "27afbd54-c11c-5bee-8355-1324f6c18e1d",
+  "savedBy": {
+    "product": "Civil 3D",
+    "version": "2026"
+  },
+  "units": {
+    "insunits": 2,
+    "linear": "feet"
+  },
+  "settings": {
+    "visretain": true
+  },
+  "civil": {
+    "coordinateSystemCode": "GA83-WF",
+    "drawingScale": 40.0,
+    "gridToGroundScale": null
+  },
+  "layers": [
+    {
+      "name": "0",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ANNO-TTLB",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-VPRT",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-PROF-VIEW",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ROAD-CNTR",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ROAD-PROF",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-STRM-PIPE",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-STRM-STRC",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-TOPO",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    }
+  ],
+  "blockDefinitions": [
+    {
+      "handle": "5B0",
+      "name": "TITLE-ARCH-D",
+      "kind": "block",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "handle": "6A0",
+      "kind": "alignment",
+      "class": "AeccDbAlignment",
+      "name": "SW-A",
+      "space": "model",
+      "layer": "C-ROAD-CNTR",
+      "reference": {
+        "shortcut": "SW-A",
+        "source": {
+          "drawing": "C-ALIGN",
+          "handle": "4A0"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6A1",
+      "kind": "profile",
+      "class": "AeccDbVAlignment",
+      "name": "SW-A FG",
+      "space": "model",
+      "layer": "C-ROAD-PROF",
+      "reference": {
+        "shortcut": "SW-A FG",
+        "source": {
+          "drawing": "C-ALIGN",
+          "handle": "4A1"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B0",
+      "kind": "pipe-network",
+      "class": "AeccDbPipeNetwork",
+      "name": "STORM",
+      "space": "model",
+      "layer": "0",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "100"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B1",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "DI-1",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "101"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B2",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "DI-2",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "102"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B3",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "MH-1",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "103"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B4",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "OUT-1",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "104"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B5",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "DI-3",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "105"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B6",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-1",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "111"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B7",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-2",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "112"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B8",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-3",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "113"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6B9",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-4",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "reference": {
+        "shortcut": "STORM",
+        "source": {
+          "drawing": "C-STRM",
+          "handle": "114"
+        },
+        "status": "current"
+      }
+    },
+    {
+      "handle": "6C0",
+      "kind": "surface",
+      "class": "AeccDbSurfaceTin",
+      "name": "EG",
+      "space": "model",
+      "layer": "C-TOPO",
+      "reference": {
+        "shortcut": "EG",
+        "source": null,
+        "status": "source-not-found"
+      }
+    },
+    {
+      "handle": "6D0",
+      "kind": "profile-view",
+      "class": "AeccDbGraphProfile",
+      "name": "SW-A PV",
+      "space": "model",
+      "layer": "C-PROF-VIEW",
+      "profileView": {
+        "alignment": "6A0",
+        "profiles": [
+          "6A1"
+        ],
+        "stationStart": 0.0,
+        "stationEnd": 341.4213562373095,
+        "elevationMin": 90.0,
+        "elevationMax": 110.0,
+        "verticalExaggeration": 10.0,
+        "origin": [
+          2151000.0,
+          1379000.0
+        ]
+      }
+    },
+    {
+      "handle": "6F0",
+      "kind": "block-reference",
+      "class": "AcDbBlockReference",
+      "space": "paper",
+      "owner": "6E0",
+      "layer": "C-ANNO-TTLB",
+      "block": {
+        "definition": "5B0",
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scaleFactors": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation": 0.0,
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "attributes": [
+          {
+            "tag": "SHEETNO",
+            "value": "C5.01"
+          },
+          {
+            "tag": "TITLE",
+            "value": "STORM DRAINAGE PROFILE"
+          },
+          {
+            "tag": "REV",
+            "value": "0"
+          }
+        ]
+      }
+    }
+  ],
+  "xrefs": [],
+  "styles": [],
+  "layouts": [
+    {
+      "handle": "6E0",
+      "name": "C501",
+      "tabOrder": 1,
+      "paperUnits": "inches",
+      "titleBlock": {
+        "blockReference": "6F0",
+        "attributes": {
+          "SHEETNO": "C5.01",
+          "TITLE": "STORM DRAINAGE PROFILE",
+          "REV": "0"
+        }
+      },
+      "viewports": [
+        {
+          "handle": "6E1",
+          "number": 1,
+          "isPaperSpaceView": true,
+          "on": true,
+          "centerPaper": [
+            18.0,
+            12.0
+          ],
+          "width": 36.0,
+          "height": 24.0
+        },
+        {
+          "handle": "6E2",
+          "number": 2,
+          "isPaperSpaceView": false,
+          "on": true,
+          "layer": "C-VPRT",
+          "centerPaper": [
+            16.0,
+            12.5
+          ],
+          "width": 30.0,
+          "height": 20.0,
+          "clipBoundary": null,
+          "view": {
+            "center": [
+              2151170.7106781187,
+              1379100.0
+            ],
+            "target": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "height": 800.0,
+            "customScale": 0.025,
+            "twist": 0.0
+          },
+          "annotationScale": "1\" = 40'",
+          "frozenLayers": []
+        }
+      ]
+    }
+  ]
+}
