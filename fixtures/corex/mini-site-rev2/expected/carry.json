@@ -1,0 +1,146 @@
+{
+  "description": "Expected result of carrying revision 1 findings and dispositions to revision 2 (ADR-009).",
+  "carried": [
+    {
+      "rule": "core.source-reference",
+      "code": "xref-not-found",
+      "from": {
+        "drawing": "C301",
+        "handle": "5A2"
+      },
+      "to": {
+        "drawing": "C301",
+        "handle": "5A2"
+      },
+      "match": "exact",
+      "status": "deferred",
+      "inheritsDisposition": true
+    },
+    {
+      "rule": "core.source-reference",
+      "code": "data-reference-source-not-found",
+      "from": {
+        "drawing": "C501",
+        "handle": "6C0"
+      },
+      "to": {
+        "drawing": "C501",
+        "handle": "6C0"
+      },
+      "match": "exact",
+      "status": "open",
+      "inheritsDisposition": false
+    },
+    {
+      "rule": "core.network-connectivity",
+      "code": "pipe-end-unconnected",
+      "from": {
+        "drawing": "C-STRM",
+        "handle": "114"
+      },
+      "to": {
+        "drawing": "C-STRM",
+        "handle": "116"
+      },
+      "match": "fallback",
+      "fallbackOn": [
+        "type",
+        "name",
+        "location"
+      ],
+      "status": "needs-confirmation",
+      "inheritsDisposition": false,
+      "why": "P-4 was erased and redrawn, so its handle changed. Its accepted disposition is not inherited until an engineer confirms the match."
+    },
+    {
+      "rule": "core.sheet-coverage",
+      "code": "object-not-visible-on-sheet",
+      "sheet": "C3.01",
+      "from": {
+        "drawing": "C-STRM",
+        "handle": "102"
+      },
+      "to": {
+        "drawing": "C-STRM",
+        "handle": "102"
+      },
+      "match": "exact",
+      "status": "dismissed",
+      "inheritsDisposition": true
+    },
+    {
+      "rule": "core.annotation-vs-model",
+      "code": "annotation-value-mismatch",
+      "from": {
+        "drawing": "C-STRM",
+        "handle": "121"
+      },
+      "to": {
+        "drawing": "C-STRM",
+        "handle": "121"
+      },
+      "match": "exact",
+      "status": "open",
+      "inheritsDisposition": false
+    }
+  ],
+  "resolvedByChange": [
+    {
+      "rule": "core.annotation-vs-model",
+      "code": "annotation-value-mismatch",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5C1"
+      }
+    },
+    {
+      "rule": "core.network-connectivity",
+      "code": "structure-without-pipes",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "105"
+      }
+    }
+  ],
+  "new": [],
+  "diff": {
+    "description": "Expected core diff between the two snapshots, by DesignObject.",
+    "added": [
+      {
+        "type": "GravityPipe",
+        "name": "P-5"
+      }
+    ],
+    "removed": [],
+    "changedIdentity": [
+      {
+        "type": "GravityPipe",
+        "name": "P-4",
+        "from": {
+          "drawing": "C-STRM",
+          "handle": "114"
+        },
+        "to": {
+          "drawing": "C-STRM",
+          "handle": "116"
+        }
+      }
+    ],
+    "changedProperties": [
+      {
+        "type": "GravityStructure",
+        "name": "DI-3",
+        "properties": [
+          "connectedPipeCount"
+        ]
+      },
+      {
+        "type": "GravityStructure",
+        "name": "MH-1",
+        "properties": [
+          "connectedPipeCount"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "description": "Dispositions recorded against the mini-site (revision 1) findings before revision 2 is reviewed.",
+  "dispositions": [
+    {
+      "rule": "core.source-reference",
+      "code": "xref-not-found",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5A2"
+      },
+      "decision": "deferred",
+      "reason": "C-UTIL will be issued by the utility consultant.",
+      "reviewer": "reviewer-a"
+    },
+    {
+      "rule": "core.sheet-coverage",
+      "code": "object-not-visible-on-sheet",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "102"
+      },
+      "sheet": "C3.01",
+      "decision": "dismissed",
+      "reason": "Type C inlets are shown on the detail sheet.",
+      "reviewer": "reviewer-a"
+    },
+    {
+      "rule": "core.network-connectivity",
+      "code": "pipe-end-unconnected",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "114"
+      },
+      "decision": "accepted",
+      "reason": "Stub for a future phase must be capped; design to update.",
+      "reviewer": "reviewer-a"
+    }
+  ]
+}

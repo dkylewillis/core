@@ -1,0 +1,251 @@
+{
+  "schema": "corex.drawing/1",
+  "id": "C-BASE",
+  "file": {
+    "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-BASE.dwg",
+    "sizeBytes": 1000000,
+    "sha256": "958dc535c7f114a382b62b553d367c8d6234acd75930b094a3766b18c0f1b256",
+    "lastSaved": "2026-09-20T15:00:00Z"
+  },
+  "fingerprintGuid": "ad3c11d1-d645-54b9-9b10-4026b3f5a237",
+  "versionGuid": "5a42347d-92e0-50a0-88f3-30664d466297",
+  "savedBy": {
+    "product": "Civil 3D",
+    "version": "2026"
+  },
+  "units": {
+    "insunits": 2,
+    "linear": "feet"
+  },
+  "settings": {
+    "visretain": true
+  },
+  "civil": {
+    "coordinateSystemCode": "GA83-WF",
+    "drawingScale": 40.0,
+    "gridToGroundScale": null
+  },
+  "layers": [
+    {
+      "name": "0",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "V-ROAD-EOP",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-WATR-HYD",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-XREF",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "SURVEY|V-CTRL",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "SURVEY"
+    }
+  ],
+  "blockDefinitions": [
+    {
+      "handle": "2B0",
+      "name": "HYD",
+      "kind": "block",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "handle": "2C0",
+      "name": "SURVEY",
+      "kind": "xref",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "handle": "2A0",
+      "kind": "polyline",
+      "class": "AcDbPolyline",
+      "space": "model",
+      "layer": "V-ROAD-EOP",
+      "geometry": {
+        "type": "polyline",
+        "ocs": {
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "elevation": 0.0
+        },
+        "vertices": [
+          [
+            2149700.0,
+            1380350.0,
+            0.0
+          ],
+          [
+            2150300.0,
+            1380350.0,
+            0.414213562373095
+          ],
+          [
+            2150400.0,
+            1380450.0,
+            0.0
+          ]
+        ],
+        "closed": false
+      }
+    },
+    {
+      "handle": "2A1",
+      "kind": "block-reference",
+      "class": "AcDbBlockReference",
+      "space": "model",
+      "layer": "C-WATR-HYD",
+      "block": {
+        "definition": "2B0",
+        "position": [
+          2150350.0,
+          1380250.0,
+          0.0
+        ],
+        "scaleFactors": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation": 0.0,
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          2150350.0,
+          0,
+          1,
+          0,
+          1380250.0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "handle": "2B1",
+      "kind": "circle",
+      "class": "AcDbCircle",
+      "space": "block",
+      "owner": "2B0",
+      "layer": "0",
+      "geometry": {
+        "type": "circle",
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 1.5,
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    }
+  ],
+  "xrefs": [
+    {
+      "handle": "2C1",
+      "blockName": "SURVEY",
+      "definition": "2C0",
+      "target": "SURVEY",
+      "attachment": "attach",
+      "resolution": {
+        "savedPath": "SURVEY.dwg",
+        "resolvedPath": "C:\\Projects\\MiniSite\\Xref\\SURVEY.dwg",
+        "resolvedBy": "relative-to-host",
+        "status": "resolved"
+      },
+      "space": "model",
+      "layer": "C-XREF",
+      "position": [
+        2145000.0,
+        1375000.0,
+        0.0
+      ],
+      "scaleFactors": [
+        1.000002000004,
+        1.000002000004,
+        1.000002000004
+      ],
+      "rotation": 0.008726646259971648,
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "unitScale": 1.000002000004,
+      "transform": [
+        0.9999639229920173,
+        -0.008726552951479838,
+        0.0,
+        2145000.0,
+        0.008726552951479838,
+        0.9999639229920173,
+        0.0,
+        1375000.0,
+        0.0,
+        0.0,
+        1.000002000004,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "styles": [],
+  "layouts": []
+}
