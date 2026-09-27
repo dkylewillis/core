@@ -7,5 +7,9 @@
 - ADR-005: SQLite as initial storage
 - ADR-006: Provenance and evidence for every finding
 - ADR-007: Deterministic checks before AI
+- ADR-008: Data shortcuts are first-class references
+- ADR-009: Stable identity and a separate review store
+- ADR-010: Explicit units and 64-bit coordinate precision
+- ADR-011: Civil 3D exporter runtime and version support (proposed)
 
 Each decision is recorded in the repository history and may be superseded by a later ADR.
