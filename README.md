@@ -25,9 +25,19 @@ CORE is Civil 3D-first, but its canonical model is source-independent. The syste
 - [Data model](DATA_MODEL.md)
 - [Coordinate and transform model](COORDINATES.md)
 - [COREX Civil 3D exchange format](docs/COREX.md)
-- [Initial QC rules](QC_RULES.md)
+- [Initial QC rules](QC_RULES.md) and [rule specifications](docs/rules/README.md)
 - [Architecture decision records](docs/adr/README.md)
 - [Architecture diagrams](docs/diagrams/README.md)
+
+## Building
+
+- [First build plan](docs/BUILD_PLAN.md) — ordered tasks with acceptance criteria
+- [Exporter spike](docs/EXPORTER_SPIKE.md) — Civil 3D investigation that precedes exporter work
+- [Agent guide](AGENTS.md) — rules and commands for coding agents
+- [COREX JSON Schemas](schemas/corex/), [SQLite schemas](schemas/core/), and [profiles](profiles/)
+- [Fixtures](fixtures/corex/) — [mini-site](fixtures/corex/mini-site/) and [mini-site-rev2](fixtures/corex/mini-site-rev2/) with expected results
+
+Validate schemas, fixtures, and profiles with `./scripts/validate.sh`.
 
 ## Scope of the first build
 
@@ -44,4 +54,4 @@ AI inference is disabled for the first build.
 
 ## Status
 
-This repository is a design baseline. The documentation is intended to make foundational decisions explicit before implementation begins.
+This repository is a design baseline with the contracts and acceptance fixtures for the first build. Implementation starts with task T1 in the [build plan](docs/BUILD_PLAN.md) once [ADR-012](docs/adr/ADR-012-implementation-stack.md) and [ADR-013](docs/adr/ADR-013-first-review-interface.md) are approved.
