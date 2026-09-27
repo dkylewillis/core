@@ -19,7 +19,14 @@ Civil 3D objects inside an Xref cannot be queried through the host drawing, so e
 
 - The exporter extracts each drawing from its own database and records Xref and data-shortcut relationships between them.
 - Initial supported range: **Civil 3D 2025, 2026, and 2027**, built from one code base that multi-targets `net8.0-windows` and `net10.0-windows`. Civil 3D 2024 and earlier (`net48`) are out of scope unless the spike shows a user need.
-- Autodesk references come from the official NuGet packages (`AutoCAD.NET` and `Civil3D.NET`) with `ExcludeAssets="runtime"`, so the exporter builds without a local ObjectARX SDK.
+- Autodesk references come from the official NuGet packages with `ExcludeAssets="runtime"`, so the exporter builds without a local ObjectARX SDK. Versions are pinned per target framework as matched pairs:
+
+  | Target | Civil 3D | `AutoCAD.NET` | `Civil3D.NET` |
+  | --- | --- | --- | --- |
+  | `net8.0-windows` | 2026 (also loads in 2025) | `25.1.0` | `13.8.1516` |
+  | `net10.0-windows` | 2027 | `26.0.0` | `13.9.628` |
+
+  Floating versions are not used: `AutoCAD.NET` `25.1.1` declares only `net10.0` and does not restore for `net8.0-windows`. With `EnableWindowsTargeting` set, both targets compile on Linux (verified 2026-09-27), so cloud agents can check that the exporter builds even though they cannot run it.
 - The exporter supports two modes: interactive (a command inside Civil 3D) and batch (AutoCAD Core Console with Civil 3D loaded, `accoreconsole.exe /product C3D`).
 - The exporter writes COREX through the shared `Core.Corex` contract library ([ADR-012](ADR-012-implementation-stack.md)), which targets `netstandard2.0` and is usable from every supported runtime.
 
