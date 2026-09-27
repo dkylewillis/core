@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CORE mapping profile",
+  "description": "Explicit rules used during canonical-model creation for rule-based inference. A snapshot records the profile's SHA-256.",
+  "type": "object",
+  "required": ["schema", "name", "networkSystems"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "core.mapping-profile/1" },
+    "name": { "type": "string" },
+    "networkSystems": {
+      "description": "Classify gravity and pressure networks by name. The first matching entry wins; an unmatched network has no system.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "match", "system"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "match": { "type": "string", "description": ".NET regular expression matched against the network name." },
+          "system": { "enum": ["storm", "sanitary", "water", "other"] }
+        }
+      }
+    }
+  }
+}

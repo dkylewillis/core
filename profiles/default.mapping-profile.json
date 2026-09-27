@@ -1,0 +1,9 @@
+{
+  "schema": "core.mapping-profile/1",
+  "name": "default",
+  "networkSystems": [
+    { "id": "storm-by-name", "match": "(?i)^(storm|sd|stm)\\b", "system": "storm" },
+    { "id": "sanitary-by-name", "match": "(?i)^(sanitary|san|ss|sewer)\\b", "system": "sanitary" },
+    { "id": "water-by-name", "match": "(?i)^(water|wtr|wl)\\b", "system": "water" }
+  ]
+}

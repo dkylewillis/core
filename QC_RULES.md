@@ -2,6 +2,8 @@
 
 The first rule set should be small, deterministic, explainable, and testable against a representative project.
 
+The normative specifications for the first four rules, the output contract, and visibility resolution are in [`docs/rules/`](docs/rules/README.md). They are tested against the [mini-site fixture](fixtures/corex/mini-site/).
+
 ## Initial candidates
 
 | Rule | Purpose | Evidence |

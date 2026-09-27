@@ -1,5 +1,7 @@
 {
   "description": "Expected canonical model facts for the mini-site fixture. Lists are exhaustive unless marked otherwise.",
+  "mappingProfile": "profiles/default.mapping-profile.json",
+  "aiEnabled": false,
   "drawings": [
     {
       "id": "C301",
@@ -253,7 +255,7 @@
       "classification": {
         "property": "system",
         "method": "rule",
-        "rule": "classification.networkSystems"
+        "rule": "storm-by-name"
       }
     },
     {

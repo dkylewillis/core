@@ -1,0 +1,48 @@
+{
+  "schema": "core.rule-profile/1",
+  "name": "default",
+  "source": "CORE defaults for the first build; not a jurisdictional standard",
+  "rules": {
+    "core.source-reference": {
+      "enabled": true,
+      "params": {
+        "reportFallbackResolution": true,
+        "unloadedXref": "observation"
+      }
+    },
+    "core.network-connectivity": {
+      "enabled": true,
+      "params": {
+        "reportStructuresWithoutPipes": true
+      }
+    },
+    "core.sheet-coverage": {
+      "enabled": true,
+      "params": {
+        "objectTypes": ["GravityPipe", "GravityStructure"],
+        "useViewFrames": true
+      }
+    },
+    "core.annotation-vs-model": {
+      "enabled": true,
+      "params": {
+        "linkTolerancePaper": 0.1,
+        "linkToleranceModelFt": 4.0,
+        "diameterToleranceIn": 0.01,
+        "lengthToleranceFt": 1.0,
+        "materialCodes": {
+          "Reinforced Concrete": "RCP",
+          "Concrete": "RCP",
+          "HDPE": "HDPE",
+          "High Density Polyethylene": "HDPE",
+          "PVC": "PVC",
+          "Polyvinyl Chloride": "PVC",
+          "Corrugated Metal": "CMP",
+          "Ductile Iron": "DIP",
+          "Polypropylene": "CPP",
+          "Vitrified Clay": "VCP"
+        }
+      }
+    }
+  }
+}

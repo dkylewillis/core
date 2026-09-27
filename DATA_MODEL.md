@@ -10,7 +10,8 @@ CORE data lives in two stores (see [ADR-009](docs/adr/ADR-009-identity-and-revie
 ### Project and sources
 
 - **Project** — a bounded engineering effort and its source set. Its identity persists across snapshots.
-- **Snapshot** — one validated canonical model of the project, with its `.corex` checksum, exporter and importer versions, creation time, and whether AI inference was enabled.
+- **Snapshot** — one validated canonical model of the project, with its `.corex` checksum, exporter and importer versions, mapping profile checksum, creation time, and whether AI inference was enabled.
+- **MappingProfile** — the explicit rules used for rule-based inference during canonical-model creation, such as classifying a network as storm or sanitary by name. See [`profiles/default.mapping-profile.json`](profiles/default.mapping-profile.json).
 - **SourceFile** — an imported file plus immutable source metadata and checksum.
 - **Drawing** — a DWG source within a project. Records `FingerprintGuid`, `VersionGuid`, units, coordinate system, and grid-to-ground scale.
 - **XrefInstance** — an occurrence of a referenced drawing with explicit host drawing, referenced drawing, nesting parent, attachment type (attach or overlay), saved and resolved path, resolution status, clip boundary, and transform.
@@ -28,7 +29,7 @@ CORE data lives in two stores (see [ADR-009](docs/adr/ADR-009-identity-and-revie
 
 ### Design Model
 
-- **DesignObject** — a source-independent engineering object such as an alignment, profile, pipe, structure, pressure pipe, surface, parcel, or utility feature. It adds engineering meaning and relationships without unnecessarily duplicating SourceEntity geometry or native properties.
+- **DesignObject** — a source-independent engineering object such as an alignment, profile, gravity pipe, gravity structure, pressure pipe, surface, parcel, or utility feature. It adds engineering meaning and relationships without unnecessarily duplicating SourceEntity geometry or native properties.
 - **EntityMapping** — a provenance-bearing link between SourceEntities and DesignObjects. It supports direct mappings and many-to-many interpretations, and records its **method**: `native`, `rule`, or `ai`.
 - **DesignRelationship** — an engineering relationship between DesignObjects, such as pipe-to-structure connection or profile-to-alignment.
 
@@ -47,7 +48,7 @@ CORE data lives in two stores (see [ADR-009](docs/adr/ADR-009-identity-and-revie
 ## Review entities
 
 - **Rule** — a versioned deterministic or AI-assisted review rule with declared inputs, applicability, units, and evidence requirements.
-- **RuleProfile** — a named set of rule parameters for a project or jurisdiction (for example, minimum cover, minimum slope, water–sewer separation), with its source standard.
+- **RuleProfile** — a named set of rule parameters for a project or jurisdiction (for example, minimum cover, minimum slope, water–sewer separation), with its source standard. See [`profiles/default.rule-profile.json`](profiles/default.rule-profile.json).
 - **RuleRun** — one execution of a Rule against a Snapshot with a RuleProfile, recording the rule version, parameters, tolerances, snapshot checksum, and time.
 - **Observation** — a measured or inferred fact produced by a RuleRun.
 - **Finding** — a review issue with severity, status, rule reference, basis, and evidence. It may combine several observations.
@@ -77,6 +78,8 @@ Every Observation and Finding records its **basis**: the least-certain mapping m
 - `ai` — at least one input came from AI inference.
 
 A deterministic rule applied to AI-inferred inputs produces an `ai`-basis result, and is labeled as such. The basis is never upgraded by later processing.
+
+The SQLite schemas that implement this model are drafted in [`schemas/core/`](schemas/core/).
 
 ## Minimum relationships
 
