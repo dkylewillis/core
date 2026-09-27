@@ -19,7 +19,9 @@ The initial user is a civil/site-development design engineer working primarily i
 
 ## Initial success criteria
 
-Given a representative Civil 3D project, CORE can import source data, build a canonical project model, preserve drawing and Xref relationships, run initial deterministic checks, and present findings with enough evidence for an engineer to verify or dismiss them.
+Given a representative Civil 3D project, CORE can import source data, build a canonical project model, preserve drawing, Xref, and data-shortcut relationships, run initial deterministic checks, and present findings with enough evidence for an engineer to verify or dismiss them.
+
+When the same project is exported again after revisions, CORE carries the engineer's dispositions forward to matching findings and shows what changed between the two snapshots.
 
 ## Non-goals for the design baseline
 
