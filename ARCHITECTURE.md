@@ -14,6 +14,8 @@ CORE is organized around five boundaries:
 
 Creating a `.core` file is an import and modeling workflow, not an engineering review. Its result is a portable SQLite canonical project file that can be reviewed repeatedly without re-reading every DWG.
 
+For Civil 3D, the exporter first creates a faithful [`.corex` exchange package](docs/COREX.md). The CORE importer then performs the creation workflow below; CORE itself does not parse DWG files.
+
 ```mermaid
 flowchart LR
   A["1. Discover\ndrawings, Xrefs, layouts, sheet set"] --> B["2. Extract\nnative Civil 3D / AutoCAD data"]

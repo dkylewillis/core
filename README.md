@@ -21,6 +21,7 @@ CORE is Civil 3D-first, but its canonical model is source-independent. The syste
 - [Architecture](ARCHITECTURE.md)
 - [Data model](DATA_MODEL.md)
 - [Coordinate and transform model](COORDINATES.md)
+- [COREX Civil 3D exchange format](docs/COREX.md)
 - [Initial QC rules](QC_RULES.md)
 - [Agent contribution rules](AGENTS.md)
 - [Architecture decision records](docs/adr/README.md)
