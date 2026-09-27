@@ -2,15 +2,12 @@
 
 ```mermaid
 flowchart LR
-  C3D["Civil 3D\npreferred structured source"] --> A["Source adapter"]
-  DOC["PDFs, calculations, standards"] --> A
-  A --> M["Canonical CORE model"]
-  M --> P["Processing\nidentity, Xrefs, coordinates"]
-  P --> D["Deterministic QC rules"]
+  C3D["Civil 3D / AutoCAD\nproject sources"] --> I["Canonical-file creation\ndiscover, extract, model, validate"]
+  SS["Sheet set, layouts, Xrefs"] --> I
+  I --> M[("project.core\nportable SQLite")]
+  M --> D["Deterministic QC rules"]
   D --> E["Evidence and findings"]
   E --> R["Engineer review"]
-  P -. optional context .-> AI["AI-assisted interpretation"]
-  AI --> E
-  DB[("Local SQLite")] --- M
-  DB --- E
+  I -. ambiguous source meaning only .-> AI["AI inference fallback"]
+  AI --> I
 ```

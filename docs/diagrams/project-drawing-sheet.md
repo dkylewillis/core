@@ -6,8 +6,11 @@ erDiagram
   PROJECT ||--o{ DRAWING : includes
   PROJECT ||--o{ DOCUMENT : includes
   DRAWING ||--o{ XREF_INSTANCE : references
-  DRAWING ||--o{ DESIGN_OBJECT : contains
+  DRAWING ||--o{ SOURCE_ENTITY : contains
+  SOURCE_ENTITY ||--o{ ENTITY_MAPPING : supports
+  DESIGN_OBJECT ||--o{ ENTITY_MAPPING : interprets
   DOCUMENT ||--o{ SHEET : publishes
   SHEET ||--o{ VIEWPORT : contains
-  VIEWPORT }o--o{ DESIGN_OBJECT : displays
+  VIEWPORT ||--o{ PRESENTATION_INSTANCE : contains
+  DESIGN_OBJECT ||--o{ PRESENTATION_INSTANCE : appears_on
 ```

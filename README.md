@@ -8,6 +8,7 @@ CORE is Civil 3D-first, but its canonical model is source-independent. The syste
 
 - Civil 3D is the preferred structured source for the initial workflow.
 - Source data is normalized into a canonical CORE model without losing source identity or lineage.
+- Canonical-file creation is separate from QC: discover and extract the project, store SourceEntities, add DesignObjects and the Document Model, resolve relationships, validate, then save a portable SQLite `.core` file.
 - Xrefs are represented as instances and transformed through an explicit coordinate pipeline; they are never silently flattened.
 - Design objects and document artifacts are separate but linkable models.
 - SQLite is the initial local storage layer.
