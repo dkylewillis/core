@@ -16,3 +16,19 @@ jobs:
       - run: pip install check-jsonschema==0.38.2
       - run: sqlite3 --version
       - run: ./scripts/validate.sh
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install check-jsonschema==0.38.2
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - name: Build
+        run: dotnet build Core.sln -c Release
+      - name: Test
+        run: dotnet test Core.sln -c Release --no-build
