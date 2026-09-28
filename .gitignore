@@ -1,0 +1,16 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+**/packages/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp

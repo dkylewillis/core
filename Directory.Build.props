@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Allows net*-windows TFMs to restore and compile on Linux (ADR-011). -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+</Project>

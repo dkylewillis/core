@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Core.Exporter.Civil3D</RootNamespace>
+    <AssemblyName>Core.Exporter.Civil3D</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <!-- Host process supplies Autodesk assemblies; do not publish a RID-specific folder. -->
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <!-- Civil 3D 2026 (also loads in 2025): .NET 8 — ADR-011 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <PackageReference Include="AutoCAD.NET" Version="25.1.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Civil3D.NET" Version="13.8.1516" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <!-- Civil 3D 2027: .NET 10 — ADR-011 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-windows'">
+    <PackageReference Include="AutoCAD.NET" Version="26.0.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Civil3D.NET" Version="13.9.628" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+</Project>
