@@ -39,6 +39,8 @@ CORE is Civil 3D-first, but its canonical model is source-independent. The syste
 
 Validate schemas, fixtures, and profiles with `./scripts/validate.sh`.
 
+The Civil 3D exporter plugin lives under [`exporter/`](exporter/README.md). It multi-targets `net8.0-windows` and `net10.0-windows` and compiles against Autodesk NuGet reference assemblies (runs only on Windows with Civil 3D).
+
 ## Scope of the first build
 
 The first implementation should establish a reliable import, canonicalization, provenance, deterministic checking, and finding-review loop for a representative Civil 3D project. Cloud services, a complete civil ontology, autonomous design decisions, and custom AI models are intentionally out of scope.

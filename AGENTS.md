@@ -25,6 +25,9 @@ Instructions for coding agents working in this repository. Read [README.md](READ
 # Validate fixtures and profiles against their schemas (also run in CI)
 ./scripts/validate.sh
 
+# Exporter plugin (compiles on Linux; runs only on Windows with Civil 3D)
+dotnet build exporter/Core.Exporter.Civil3D/Core.Exporter.Civil3D.csproj
+
 # After T1
 dotnet build
 dotnet test

@@ -5,7 +5,7 @@ A short, throwaway investigation on a real Civil 3D project to confirm the assum
 ## Setup
 
 - Civil 3D 2026 (and 2027 if available).
-- A plugin project referencing the `AutoCAD.NET` and `Civil3D.NET` NuGet packages with `ExcludeAssets="runtime"`, targeting `net8.0-windows` for 2026 and `net10.0-windows` for 2027.
+- The plugin project at [`exporter/Core.Exporter.Civil3D/`](../exporter/Core.Exporter.Civil3D/), which references the `AutoCAD.NET` and `Civil3D.NET` NuGet packages with `ExcludeAssets="runtime"`, targeting `net8.0-windows` for 2026 and `net10.0-windows` for 2027 (versions pinned in [ADR-011](adr/ADR-011-exporter-runtime.md)). See [`exporter/README.md`](../exporter/README.md) for build and `NETLOAD` steps.
 - A representative project with nested Xrefs, at least one overlay, data shortcuts (alignment, profile, surface, pipe network), a sheet set, and at least one plan and one plan/profile sheet. Keep it outside this repository if it contains client data.
 
 ## Questions to answer
