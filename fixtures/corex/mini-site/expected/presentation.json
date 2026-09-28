@@ -1,0 +1,248 @@
+{
+  "description": "Expected presentation results. Entries are not exhaustive; each listed entry must match. 'reasons' is ordered by the precedence in docs/rules/visibility.md.",
+  "viewports": [
+    {
+      "sheet": "C3.01",
+      "viewport": {
+        "drawing": "C301",
+        "handle": "5E1"
+      },
+      "kind": "plan",
+      "entries": [
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "101"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "DI-1",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-STRC"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "102"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "DI-2",
+          "inside": true,
+          "visible": false,
+          "reasons": [
+            "style-component-layer-frozen-in-viewport"
+          ],
+          "effectiveLayer": "C-STRM|C-STRM-STRC-C"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "103"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "MH-1",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-STRC"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "104"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "OUT-1",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-STRC"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "105"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "DI-3",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-STRC"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "111"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "P-1",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-PIPE"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "112"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "P-2",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-PIPE"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "113"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "P-3",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-PIPE"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "114"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "designObject": "P-4",
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-PIPE"
+        },
+        {
+          "entity": {
+            "drawing": "C-STRM",
+            "handle": "121"
+          },
+          "path": [
+            "C301",
+            "C-STRM"
+          ],
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-STRM|C-STRM-LABL"
+        },
+        {
+          "entity": {
+            "drawing": "C-BASE",
+            "handle": "2A0"
+          },
+          "path": [
+            "C301",
+            "C-BASE"
+          ],
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "C-BASE|V-ROAD-EOP"
+        },
+        {
+          "entity": {
+            "drawing": "C-BASE",
+            "handle": "2B1"
+          },
+          "path": [
+            "C301",
+            "C-BASE"
+          ],
+          "inside": true,
+          "visible": false,
+          "reasons": [
+            "layer-frozen-in-viewport"
+          ],
+          "effectiveLayer": "C-BASE|C-WATR-HYD",
+          "blockPath": [
+            {
+              "drawing": "C-BASE",
+              "handle": "2A1"
+            }
+          ],
+          "note": "Entity is on layer 0 inside block HYD and inherits the block reference's layer."
+        },
+        {
+          "entity": {
+            "drawing": "SURVEY",
+            "handle": "3A0"
+          },
+          "path": [
+            "C301",
+            "C-BASE",
+            "SURVEY"
+          ],
+          "inside": true,
+          "visible": true,
+          "reasons": [],
+          "effectiveLayer": "SURVEY|V-CTRL"
+        },
+        {
+          "entity": {
+            "drawing": "C-BASE",
+            "handle": "2A0"
+          },
+          "path": [
+            "C301",
+            "C-STRM",
+            "C-BASE"
+          ],
+          "inside": true,
+          "visible": false,
+          "reasons": [
+            "xref-not-loaded"
+          ],
+          "note": "Overlay inside C-STRM is not loaded through C301."
+        }
+      ]
+    },
+    {
+      "sheet": "C5.01",
+      "viewport": {
+        "drawing": "C501",
+        "handle": "6E2"
+      },
+      "kind": "profile",
+      "profileView": {
+        "drawing": "C501",
+        "handle": "6D0"
+      },
+      "entries": []
+    }
+  ]
+}

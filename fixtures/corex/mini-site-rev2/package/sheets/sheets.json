@@ -1,0 +1,26 @@
+{
+  "schema": "corex.sheets/1",
+  "sheetSet": {
+    "name": "MiniSite",
+    "path": "C:\\Projects\\MiniSite\\MiniSite.dst",
+    "sha256": "7d238a1da3730a29036a62d2411d1acd08f0e7f474f9cd9770a19b7ff231f075"
+  },
+  "sheets": [
+    {
+      "number": "C3.01",
+      "title": "STORM DRAINAGE PLAN",
+      "revision": "0",
+      "drawing": "C301",
+      "layout": "5D0",
+      "source": "sheet-set"
+    },
+    {
+      "number": "C5.01",
+      "title": "STORM DRAINAGE PROFILE",
+      "revision": "0",
+      "drawing": "C501",
+      "layout": "6E0",
+      "source": "sheet-set"
+    }
+  ]
+}

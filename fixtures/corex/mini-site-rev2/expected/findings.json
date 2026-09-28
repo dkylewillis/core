@@ -1,0 +1,85 @@
+{
+  "description": "Expected review results for revision 2 with profiles/default.rule-profile.json. Exhaustive, matched on rule, code, and subject.",
+  "profile": "profiles/default.rule-profile.json",
+  "findings": [
+    {
+      "rule": "core.source-reference",
+      "code": "xref-not-found",
+      "severity": "high",
+      "basis": "native",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5A2"
+      }
+    },
+    {
+      "rule": "core.source-reference",
+      "code": "data-reference-source-not-found",
+      "severity": "high",
+      "basis": "native",
+      "subject": {
+        "drawing": "C501",
+        "handle": "6C0"
+      }
+    },
+    {
+      "rule": "core.network-connectivity",
+      "code": "pipe-end-unconnected",
+      "severity": "medium",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "116"
+      }
+    },
+    {
+      "rule": "core.sheet-coverage",
+      "code": "object-not-visible-on-sheet",
+      "severity": "medium",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "102"
+      }
+    },
+    {
+      "rule": "core.annotation-vs-model",
+      "code": "annotation-value-mismatch",
+      "severity": "high",
+      "basis": "native",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "121"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "rule": "core.source-reference",
+      "code": "xref-resolved-by-fallback",
+      "basis": "native",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5A0"
+      }
+    }
+  ],
+  "mustNotReport": [
+    {
+      "rule": "core.annotation-vs-model",
+      "subject": {
+        "drawing": "C301",
+        "handle": "5C1"
+      },
+      "why": "Callout now reads 24\" RCP @ 0.71%, matching P-2 (0.7071% is within 0.005)."
+    },
+    {
+      "rule": "core.network-connectivity",
+      "subject": {
+        "drawing": "C-STRM",
+        "handle": "105"
+      },
+      "why": "DI-3 is now connected by P-5."
+    }
+  ]
+}

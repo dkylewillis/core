@@ -1,0 +1,45 @@
+{
+  "schema": "corex.shortcuts/1",
+  "folder": {
+    "path": "C:\\Projects\\MiniSite\\_Shortcuts",
+    "exists": true
+  },
+  "shortcuts": [
+    {
+      "name": "SW-A",
+      "objectType": "alignment",
+      "shortcutFile": "Alignments\\SW-A.xml",
+      "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-ALIGN.dwg",
+      "sourceDrawing": "C-ALIGN",
+      "sourceHandle": "4A0",
+      "status": "valid"
+    },
+    {
+      "name": "SW-A FG",
+      "objectType": "profile",
+      "shortcutFile": "Alignments\\SW-A\\Profiles\\SW-A FG.xml",
+      "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-ALIGN.dwg",
+      "sourceDrawing": "C-ALIGN",
+      "sourceHandle": "4A1",
+      "status": "valid"
+    },
+    {
+      "name": "STORM",
+      "objectType": "pipe-network",
+      "shortcutFile": "PipeNetworks\\STORM.xml",
+      "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-STRM.dwg",
+      "sourceDrawing": "C-STRM",
+      "sourceHandle": "100",
+      "status": "valid"
+    },
+    {
+      "name": "EG",
+      "objectType": "surface",
+      "shortcutFile": "Surfaces\\EG.xml",
+      "sourcePath": "C:\\Projects\\MiniSite\\Surfaces\\C-SURF.dwg",
+      "sourceDrawing": null,
+      "sourceHandle": null,
+      "status": "source-not-found"
+    }
+  ]
+}

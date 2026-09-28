@@ -1,0 +1,703 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COREX drawing",
+  "description": "Everything extracted from one DWG, read from its own database. Nested Xrefs are recorded in the drawing that directly references them.",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "file",
+    "fingerprintGuid",
+    "versionGuid",
+    "savedBy",
+    "units",
+    "settings",
+    "civil",
+    "layers",
+    "blockDefinitions",
+    "entities",
+    "xrefs",
+    "styles",
+    "layouts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "corex.drawing/1" },
+    "id": { "$ref": "common.schema.json#/$defs/drawingId" },
+    "file": {
+      "type": "object",
+      "required": ["sourcePath", "sizeBytes", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "sourcePath": { "type": "string" },
+        "sizeBytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "common.schema.json#/$defs/sha256" },
+        "lastSaved": { "$ref": "common.schema.json#/$defs/timestamp" }
+      }
+    },
+    "fingerprintGuid": { "$ref": "common.schema.json#/$defs/guid" },
+    "versionGuid": { "$ref": "common.schema.json#/$defs/guid" },
+    "savedBy": {
+      "type": "object",
+      "required": ["product", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "product": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "units": { "$ref": "common.schema.json#/$defs/units" },
+    "settings": {
+      "type": "object",
+      "required": ["visretain"],
+      "additionalProperties": false,
+      "properties": {
+        "visretain": {
+          "description": "VISRETAIN: when true, the host's overrides of Xref-dependent layer state are kept.",
+          "type": "boolean"
+        }
+      }
+    },
+    "civil": {
+      "description": "Civil 3D drawing settings; null when the drawing has no Civil 3D settings.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["coordinateSystemCode", "drawingScale", "gridToGroundScale"],
+          "additionalProperties": false,
+          "properties": {
+            "coordinateSystemCode": { "type": ["string", "null"] },
+            "drawingScale": { "type": ["number", "null"] },
+            "gridToGroundScale": { "type": ["number", "null"] }
+          }
+        }
+      ]
+    },
+    "layers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/layer" }
+    },
+    "blockDefinitions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/blockDefinition" }
+    },
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entity" }
+    },
+    "xrefs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/xref" }
+    },
+    "styles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/style" }
+    },
+    "layouts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/layout" }
+    }
+  },
+  "$defs": {
+    "handle": { "$ref": "common.schema.json#/$defs/handle" },
+    "layer": {
+      "type": "object",
+      "required": ["name", "on", "frozen", "locked", "plot", "dependentXref"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "on": { "type": "boolean" },
+        "frozen": { "type": "boolean" },
+        "locked": { "type": "boolean" },
+        "plot": { "type": "boolean" },
+        "dependentXref": {
+          "description": "Xref block name for an Xref-dependent layer such as 'C-STRM|C-STRM-PIPE'; null for the drawing's own layers.",
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "blockDefinition": {
+      "type": "object",
+      "required": ["handle", "name", "kind", "origin"],
+      "additionalProperties": false,
+      "properties": {
+        "handle": { "$ref": "#/$defs/handle" },
+        "name": { "type": "string" },
+        "kind": { "enum": ["block", "xref", "anonymous"] },
+        "origin": { "$ref": "common.schema.json#/$defs/point3" }
+      }
+    },
+    "reference": {
+      "description": "Present when the object is a Civil 3D data-shortcut reference rather than native to this drawing.",
+      "type": "object",
+      "required": ["shortcut", "source", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "shortcut": { "type": "string", "description": "Shortcut name as listed in shortcuts.json." },
+        "source": {
+          "oneOf": [
+            { "$ref": "common.schema.json#/$defs/entityRef" },
+            { "type": "null" }
+          ]
+        },
+        "status": { "enum": ["current", "out-of-date", "source-not-found", "object-not-found"] }
+      }
+    },
+    "attachedData": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "objectData": {
+          "description": "Map 3D Object Data records.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["table", "fields"],
+            "additionalProperties": false,
+            "properties": {
+              "table": { "type": "string" },
+              "fields": { "type": "object" }
+            }
+          }
+        },
+        "propertySets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "properties"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "properties": { "type": "object" }
+            }
+          }
+        }
+      }
+    },
+    "entityKind": {
+      "enum": [
+        "line",
+        "polyline",
+        "polyline3d",
+        "arc",
+        "circle",
+        "text",
+        "mtext",
+        "mleader",
+        "block-reference",
+        "hatch",
+        "dimension",
+        "table",
+        "pipe-network",
+        "pipe",
+        "structure",
+        "pressure-network",
+        "pressure-pipe",
+        "pressure-fitting",
+        "pressure-appurtenance",
+        "alignment",
+        "profile",
+        "profile-view",
+        "surface",
+        "feature-line",
+        "view-frame-group",
+        "view-frame",
+        "match-line",
+        "label",
+        "other"
+      ]
+    },
+    "entity": {
+      "type": "object",
+      "required": ["handle", "kind", "class", "space", "layer"],
+      "additionalProperties": false,
+      "properties": {
+        "handle": { "$ref": "#/$defs/handle" },
+        "kind": { "$ref": "#/$defs/entityKind" },
+        "class": {
+          "description": "Native class name as reported by the API (RXClass name), for example 'AcDbPolyline' or 'AeccDbPipe'.",
+          "type": "string"
+        },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "space": { "enum": ["model", "paper", "block"] },
+        "owner": {
+          "description": "Layout handle for paper-space entities; block definition handle for entities inside a block.",
+          "$ref": "#/$defs/handle"
+        },
+        "layer": { "type": "string" },
+        "visible": { "type": "boolean", "default": true },
+        "style": { "$ref": "#/$defs/handle", "description": "Civil 3D object or label style." },
+        "proxy": { "type": "boolean", "default": false },
+        "reference": { "$ref": "#/$defs/reference" },
+        "attachedData": { "$ref": "#/$defs/attachedData" },
+        "properties": {
+          "description": "Additional native properties, keyed by API property name, recorded without interpretation.",
+          "type": "object"
+        },
+        "geometry": { "$ref": "common.schema.json#/$defs/geometry" },
+        "text": { "$ref": "#/$defs/text" },
+        "leader": { "$ref": "#/$defs/leader" },
+        "block": { "$ref": "#/$defs/blockReference" },
+        "network": { "$ref": "#/$defs/network" },
+        "pipe": { "$ref": "#/$defs/pipe" },
+        "structure": { "$ref": "#/$defs/structure" },
+        "pressurePart": { "$ref": "#/$defs/pressurePart" },
+        "alignment": { "$ref": "#/$defs/alignment" },
+        "profile": { "$ref": "#/$defs/profile" },
+        "profileView": { "$ref": "#/$defs/profileView" },
+        "viewFrame": { "$ref": "#/$defs/viewFrame" },
+        "label": { "$ref": "#/$defs/label" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "space": { "enum": ["paper", "block"] } } },
+          "then": { "required": ["owner"] }
+        },
+        {
+          "if": { "properties": { "kind": { "enum": ["line", "polyline", "polyline3d", "arc", "circle", "feature-line"] } } },
+          "then": { "required": ["geometry"] }
+        },
+        {
+          "if": { "properties": { "kind": { "enum": ["text", "mtext"] } } },
+          "then": { "required": ["text"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "mleader" } } },
+          "then": { "required": ["text", "leader"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "block-reference" } } },
+          "then": { "required": ["block"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "profile-view" } } },
+          "then": { "required": ["profileView"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "view-frame" } } },
+          "then": { "required": ["viewFrame"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "label" } } },
+          "then": { "required": ["label"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "surface" } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["geometry"] }
+        },
+        {
+          "if": { "properties": { "kind": { "enum": ["pipe-network", "pressure-network"] } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["network"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "pipe" } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["pipe"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "structure" } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["structure"] }
+        },
+        {
+          "if": { "properties": { "kind": { "enum": ["pressure-pipe", "pressure-fitting", "pressure-appurtenance"] } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["pressurePart"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "alignment" } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["alignment"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "profile" } }, "not": { "required": ["reference"] } },
+          "then": { "required": ["profile"] }
+        }
+      ]
+    },
+    "text": {
+      "type": "object",
+      "required": ["contents", "plain", "location", "height", "rotation"],
+      "additionalProperties": false,
+      "properties": {
+        "contents": { "type": "string", "description": "Raw contents including MText formatting codes." },
+        "plain": { "type": "string", "description": "Contents with formatting codes removed." },
+        "location": { "$ref": "common.schema.json#/$defs/point3" },
+        "height": { "type": "number" },
+        "rotation": { "type": "number" }
+      }
+    },
+    "leader": {
+      "type": "object",
+      "required": ["vertices"],
+      "additionalProperties": false,
+      "properties": {
+        "vertices": {
+          "description": "Leader line vertices; the first vertex is the arrowhead.",
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "common.schema.json#/$defs/point3" }
+        }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "required": ["tag", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "tag": { "type": "string" },
+        "value": { "type": "string" },
+        "handle": { "$ref": "#/$defs/handle" }
+      }
+    },
+    "blockReference": {
+      "type": "object",
+      "required": ["definition", "position", "scaleFactors", "rotation", "normal", "transform"],
+      "additionalProperties": false,
+      "properties": {
+        "definition": { "$ref": "#/$defs/handle" },
+        "position": { "$ref": "common.schema.json#/$defs/point3" },
+        "scaleFactors": { "$ref": "common.schema.json#/$defs/point3" },
+        "rotation": { "type": "number" },
+        "normal": { "$ref": "common.schema.json#/$defs/vector3" },
+        "transform": { "$ref": "common.schema.json#/$defs/matrix4" },
+        "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } }
+      }
+    },
+    "network": {
+      "type": "object",
+      "required": ["parts"],
+      "additionalProperties": false,
+      "properties": {
+        "parts": {
+          "description": "Handles of every pipe, structure, fitting, and appurtenance in the network.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/handle" }
+        }
+      }
+    },
+    "pipe": {
+      "description": "Gravity pipe. Values are in drawing units. Start and end points are on the pipe centerline.",
+      "type": "object",
+      "required": ["network", "startStructure", "endStructure", "startPoint", "endPoint", "innerDiameter", "shape", "material", "partFamily", "partSize"],
+      "additionalProperties": false,
+      "properties": {
+        "network": { "$ref": "#/$defs/handle" },
+        "startStructure": { "oneOf": [{ "$ref": "#/$defs/handle" }, { "type": "null" }] },
+        "endStructure": { "oneOf": [{ "$ref": "#/$defs/handle" }, { "type": "null" }] },
+        "startPoint": { "$ref": "common.schema.json#/$defs/point3" },
+        "endPoint": { "$ref": "common.schema.json#/$defs/point3" },
+        "innerDiameter": { "type": "number", "exclusiveMinimum": 0 },
+        "outerDiameter": { "type": "number", "exclusiveMinimum": 0 },
+        "shape": { "enum": ["circular", "elliptical", "egg", "rectangular", "other"] },
+        "material": { "type": "string" },
+        "partFamily": { "type": "string" },
+        "partSize": { "type": "string" }
+      }
+    },
+    "structure": {
+      "description": "Gravity network structure. Values are in drawing units.",
+      "type": "object",
+      "required": ["network", "position", "rimElevation", "sumpElevation", "connectedPipes", "partFamily", "partSize"],
+      "additionalProperties": false,
+      "properties": {
+        "network": { "$ref": "#/$defs/handle" },
+        "position": { "$ref": "common.schema.json#/$defs/point3" },
+        "rimElevation": { "type": "number" },
+        "sumpElevation": { "type": "number" },
+        "connectedPipes": { "type": "array", "items": { "$ref": "#/$defs/handle" } },
+        "innerDiameterOrWidth": { "type": "number" },
+        "partFamily": { "type": "string" },
+        "partSize": { "type": "string" }
+      }
+    },
+    "pressurePart": {
+      "description": "Pressure network pipe, fitting, or appurtenance. Values are in drawing units.",
+      "type": "object",
+      "required": ["network", "connectedParts", "partSize"],
+      "additionalProperties": false,
+      "properties": {
+        "network": { "$ref": "#/$defs/handle" },
+        "startPoint": { "$ref": "common.schema.json#/$defs/point3" },
+        "endPoint": { "$ref": "common.schema.json#/$defs/point3" },
+        "position": { "$ref": "common.schema.json#/$defs/point3" },
+        "connectedParts": {
+          "description": "Connected part handles; for pressure pipes, index 0 is the start connection and index 1 the end connection, null when unconnected.",
+          "type": "array",
+          "items": { "oneOf": [{ "$ref": "#/$defs/handle" }, { "type": "null" }] }
+        },
+        "innerDiameter": { "type": "number" },
+        "material": { "type": "string" },
+        "partSize": { "type": "string" }
+      }
+    },
+    "alignment": {
+      "type": "object",
+      "required": ["startStation", "segments"],
+      "additionalProperties": false,
+      "properties": {
+        "startStation": { "type": "number" },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["type", "start", "end", "startStation", "length"],
+            "additionalProperties": false,
+            "properties": {
+              "type": { "enum": ["line", "arc", "spiral"] },
+              "start": { "$ref": "common.schema.json#/$defs/point2" },
+              "end": { "$ref": "common.schema.json#/$defs/point2" },
+              "startStation": { "type": "number" },
+              "length": { "type": "number", "exclusiveMinimum": 0 },
+              "center": { "$ref": "common.schema.json#/$defs/point2" },
+              "radius": { "type": "number" },
+              "clockwise": { "type": "boolean" },
+              "radiusIn": { "type": ["number", "null"] },
+              "radiusOut": { "type": ["number", "null"] },
+              "spiralDefinition": { "type": "string" }
+            },
+            "allOf": [
+              {
+                "if": { "properties": { "type": { "const": "arc" } } },
+                "then": { "required": ["center", "radius", "clockwise"] }
+              },
+              {
+                "if": { "properties": { "type": { "const": "spiral" } } },
+                "then": { "required": ["radiusIn", "radiusOut", "spiralDefinition"] }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "required": ["alignment", "profileType", "pvis"],
+      "additionalProperties": false,
+      "properties": {
+        "alignment": { "$ref": "#/$defs/handle" },
+        "profileType": { "enum": ["layout", "surface", "other"] },
+        "pvis": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["station", "elevation", "curveLength"],
+            "additionalProperties": false,
+            "properties": {
+              "station": { "type": "number" },
+              "elevation": { "type": "number" },
+              "curveLength": { "type": "number", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "profileView": {
+      "description": "Linear mapping: modelX = origin.x + (station - stationStart); modelY = origin.y + (elevation - elevationMin) * verticalExaggeration.",
+      "type": "object",
+      "required": ["alignment", "profiles", "stationStart", "stationEnd", "elevationMin", "elevationMax", "verticalExaggeration", "origin"],
+      "additionalProperties": false,
+      "properties": {
+        "alignment": { "$ref": "#/$defs/handle" },
+        "profiles": { "type": "array", "items": { "$ref": "#/$defs/handle" } },
+        "stationStart": { "type": "number" },
+        "stationEnd": { "type": "number" },
+        "elevationMin": { "type": "number" },
+        "elevationMax": { "type": "number" },
+        "verticalExaggeration": { "type": "number", "exclusiveMinimum": 0 },
+        "origin": {
+          "description": "Model-space XY of (stationStart, elevationMin).",
+          "$ref": "common.schema.json#/$defs/point2"
+        }
+      }
+    },
+    "viewFrame": {
+      "type": "object",
+      "required": ["group", "sheetName", "boundary", "alignment", "stationStart", "stationEnd"],
+      "additionalProperties": false,
+      "properties": {
+        "group": { "$ref": "#/$defs/handle" },
+        "sheetName": { "type": ["string", "null"] },
+        "boundary": { "$ref": "common.schema.json#/$defs/polygon2" },
+        "alignment": { "oneOf": [{ "$ref": "#/$defs/handle" }, { "type": "null" }] },
+        "stationStart": { "type": ["number", "null"] },
+        "stationEnd": { "type": ["number", "null"] }
+      }
+    },
+    "label": {
+      "type": "object",
+      "required": ["annotates", "anchor", "text", "textOverridden"],
+      "additionalProperties": false,
+      "properties": {
+        "annotates": { "$ref": "#/$defs/handle" },
+        "anchor": { "$ref": "common.schema.json#/$defs/point3" },
+        "text": { "type": ["string", "null"], "description": "Displayed text, when the API exposes it." },
+        "textOverridden": { "type": "boolean" }
+      }
+    },
+    "xref": {
+      "description": "One Xref block reference placed directly in this drawing.",
+      "type": "object",
+      "required": [
+        "handle",
+        "blockName",
+        "definition",
+        "target",
+        "attachment",
+        "resolution",
+        "space",
+        "layer",
+        "position",
+        "scaleFactors",
+        "rotation",
+        "normal",
+        "unitScale",
+        "transform"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "handle": { "$ref": "#/$defs/handle" },
+        "blockName": { "type": "string" },
+        "definition": { "$ref": "#/$defs/handle" },
+        "target": {
+          "description": "Referenced drawing; null when it could not be resolved.",
+          "oneOf": [{ "$ref": "common.schema.json#/$defs/drawingId" }, { "type": "null" }]
+        },
+        "attachment": { "enum": ["attach", "overlay"] },
+        "resolution": { "$ref": "common.schema.json#/$defs/resolution" },
+        "space": { "enum": ["model", "paper"] },
+        "owner": { "$ref": "#/$defs/handle" },
+        "layer": { "type": "string", "description": "Layer the Xref is inserted on; freezing it hides the whole Xref." },
+        "visible": { "type": "boolean", "default": true },
+        "position": { "$ref": "common.schema.json#/$defs/point3" },
+        "scaleFactors": {
+          "description": "Scale factors of the block reference, including any unit conversion.",
+          "$ref": "common.schema.json#/$defs/point3"
+        },
+        "rotation": { "type": "number" },
+        "normal": { "$ref": "common.schema.json#/$defs/vector3" },
+        "unitScale": {
+          "description": "Unit conversion factor from target to host units included in scaleFactors (1 when units match).",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "transform": {
+          "description": "Block transform from target model space to this drawing's space.",
+          "$ref": "common.schema.json#/$defs/matrix4"
+        },
+        "clip": {
+          "type": "object",
+          "required": ["boundary", "inverted", "enabled"],
+          "additionalProperties": false,
+          "properties": {
+            "boundary": {
+              "description": "Clip boundary in the target drawing's model coordinates.",
+              "$ref": "common.schema.json#/$defs/polygon2"
+            },
+            "inverted": { "type": "boolean" },
+            "enabled": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "style": {
+      "type": "object",
+      "required": ["handle", "name", "kind", "objectType", "components"],
+      "additionalProperties": false,
+      "properties": {
+        "handle": { "$ref": "#/$defs/handle" },
+        "name": { "type": "string" },
+        "kind": { "enum": ["object", "label"] },
+        "objectType": { "type": "string" },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "view", "visible", "layer"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "view": { "enum": ["plan", "model", "profile", "section"] },
+              "visible": { "type": "boolean" },
+              "layer": {
+                "description": "Component layer; '0' means the component uses the object's own layer.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "required": ["handle", "name", "tabOrder", "titleBlock", "viewports"],
+      "additionalProperties": false,
+      "properties": {
+        "handle": { "$ref": "#/$defs/handle" },
+        "name": { "type": "string" },
+        "tabOrder": { "type": "integer", "minimum": 1 },
+        "paperUnits": { "enum": ["inches", "millimeters"] },
+        "titleBlock": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["blockReference", "attributes"],
+              "additionalProperties": false,
+              "properties": {
+                "blockReference": { "$ref": "#/$defs/handle" },
+                "attributes": { "type": "object", "additionalProperties": { "type": "string" } }
+              }
+            }
+          ]
+        },
+        "viewports": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/viewport" }
+        }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "required": ["handle", "number", "isPaperSpaceView", "on", "centerPaper", "width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "handle": { "$ref": "#/$defs/handle" },
+        "number": { "type": "integer", "minimum": 1 },
+        "isPaperSpaceView": {
+          "description": "True for the layout's own paper-space view (the first viewport); it is never a model-space window.",
+          "type": "boolean"
+        },
+        "on": { "type": "boolean" },
+        "layer": { "type": "string" },
+        "centerPaper": { "$ref": "common.schema.json#/$defs/point2" },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "clipBoundary": {
+          "description": "Nonrectangular clip boundary in paper coordinates; null when rectangular.",
+          "oneOf": [{ "$ref": "common.schema.json#/$defs/polygon2" }, { "type": "null" }]
+        },
+        "view": {
+          "type": "object",
+          "required": ["center", "target", "direction", "height", "customScale", "twist"],
+          "additionalProperties": false,
+          "properties": {
+            "center": { "$ref": "common.schema.json#/$defs/point2", "description": "View center in display coordinates (DCS)." },
+            "target": { "$ref": "common.schema.json#/$defs/point3" },
+            "direction": { "$ref": "common.schema.json#/$defs/vector3" },
+            "height": { "type": "number", "exclusiveMinimum": 0 },
+            "customScale": { "type": "number", "exclusiveMinimum": 0, "description": "Paper units per model unit." },
+            "twist": { "type": "number" }
+          }
+        },
+        "annotationScale": { "type": ["string", "null"] },
+        "frozenLayers": {
+          "description": "Layers frozen in this viewport only (VP freeze), including Xref-dependent layer names.",
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "if": { "properties": { "isPaperSpaceView": { "const": false } } },
+      "then": { "required": ["view", "frozenLayers"] }
+    }
+  }
+}

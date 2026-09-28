@@ -1,0 +1,562 @@
+{
+  "schema": "corex.drawing/1",
+  "id": "C-STRM",
+  "file": {
+    "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-STRM.dwg",
+    "sizeBytes": 1000000,
+    "sha256": "bbd5637302e1cf1230237e7398f9065c19901298c866757b08f71c20c46a7831",
+    "lastSaved": "2026-09-20T15:00:00Z"
+  },
+  "fingerprintGuid": "108f5bf5-6f38-5ffc-a068-75f5a47b030c",
+  "versionGuid": "6f3264c4-8d95-5b21-ae96-06f18929aff8",
+  "savedBy": {
+    "product": "Civil 3D",
+    "version": "2026"
+  },
+  "units": {
+    "insunits": 2,
+    "linear": "feet"
+  },
+  "settings": {
+    "visretain": true
+  },
+  "civil": {
+    "coordinateSystemCode": "GA83-WF",
+    "drawingScale": 40.0,
+    "gridToGroundScale": null
+  },
+  "layers": [
+    {
+      "name": "0",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-STRM-PIPE",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-STRM-STRC",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-STRM-STRC-C",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-STRM-LABL",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-XREF",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-BASE|V-ROAD-EOP",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-BASE"
+    },
+    {
+      "name": "C-BASE|C-WATR-HYD",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": "C-BASE"
+    }
+  ],
+  "blockDefinitions": [
+    {
+      "handle": "1F1",
+      "name": "C-BASE",
+      "kind": "xref",
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "handle": "100",
+      "kind": "pipe-network",
+      "class": "AeccDbPipeNetwork",
+      "name": "STORM",
+      "space": "model",
+      "layer": "0",
+      "network": {
+        "parts": [
+          "101",
+          "102",
+          "103",
+          "104",
+          "105",
+          "111",
+          "112",
+          "113",
+          "114"
+        ]
+      }
+    },
+    {
+      "handle": "101",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "DI-1",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "style": "1A2",
+      "structure": {
+        "network": "100",
+        "position": [
+          2150100.0,
+          1380200.0,
+          105.0
+        ],
+        "rimElevation": 105.0,
+        "sumpElevation": 99.0,
+        "connectedPipes": [
+          "111",
+          "114"
+        ],
+        "innerDiameterOrWidth": 4.0,
+        "partFamily": "Curb Inlet",
+        "partSize": "Type A Inlet"
+      }
+    },
+    {
+      "handle": "102",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "DI-2",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "style": "1A3",
+      "structure": {
+        "network": "100",
+        "position": [
+          2150300.0,
+          1380200.0,
+          104.5
+        ],
+        "rimElevation": 104.5,
+        "sumpElevation": 98.5,
+        "connectedPipes": [
+          "112"
+        ],
+        "innerDiameterOrWidth": 4.0,
+        "partFamily": "Curb Inlet",
+        "partSize": "Type C Inlet"
+      }
+    },
+    {
+      "handle": "103",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "MH-1",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "style": "1A4",
+      "structure": {
+        "network": "100",
+        "position": [
+          2150200.0,
+          1380100.0,
+          104.0
+        ],
+        "rimElevation": 104.0,
+        "sumpElevation": 96.0,
+        "connectedPipes": [
+          "111",
+          "112",
+          "113"
+        ],
+        "innerDiameterOrWidth": 4.0,
+        "partFamily": "Manhole",
+        "partSize": "48 inch Manhole"
+      }
+    },
+    {
+      "handle": "104",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "OUT-1",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "style": "1A4",
+      "structure": {
+        "network": "100",
+        "position": [
+          2150200.0,
+          1379900.0,
+          100.0
+        ],
+        "rimElevation": 100.0,
+        "sumpElevation": 94.0,
+        "connectedPipes": [
+          "113"
+        ],
+        "innerDiameterOrWidth": 4.0,
+        "partFamily": "Headwall",
+        "partSize": "24 inch Headwall"
+      }
+    },
+    {
+      "handle": "105",
+      "kind": "structure",
+      "class": "AeccDbStructure",
+      "name": "DI-3",
+      "space": "model",
+      "layer": "C-STRM-STRC",
+      "style": "1A2",
+      "structure": {
+        "network": "100",
+        "position": [
+          2150400.0,
+          1380000.0,
+          103.0
+        ],
+        "rimElevation": 103.0,
+        "sumpElevation": 99.0,
+        "connectedPipes": [],
+        "innerDiameterOrWidth": 4.0,
+        "partFamily": "Curb Inlet",
+        "partSize": "Type A Inlet"
+      }
+    },
+    {
+      "handle": "111",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-1",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "style": "1A1",
+      "pipe": {
+        "network": "100",
+        "startStructure": "101",
+        "endStructure": "103",
+        "startPoint": [
+          2150100.0,
+          1380200.0,
+          100.75
+        ],
+        "endPoint": [
+          2150200.0,
+          1380100.0,
+          99.75
+        ],
+        "innerDiameter": 1.5,
+        "shape": "circular",
+        "material": "Reinforced Concrete",
+        "partFamily": "Concrete Pipe",
+        "partSize": "18 inch Concrete Pipe"
+      }
+    },
+    {
+      "handle": "112",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-2",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "style": "1A1",
+      "pipe": {
+        "network": "100",
+        "startStructure": "102",
+        "endStructure": "103",
+        "startPoint": [
+          2150300.0,
+          1380200.0,
+          100.5
+        ],
+        "endPoint": [
+          2150200.0,
+          1380100.0,
+          99.5
+        ],
+        "innerDiameter": 2.0,
+        "shape": "circular",
+        "material": "Reinforced Concrete",
+        "partFamily": "Concrete Pipe",
+        "partSize": "24 inch Concrete Pipe"
+      }
+    },
+    {
+      "handle": "113",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-3",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "style": "1A1",
+      "pipe": {
+        "network": "100",
+        "startStructure": "103",
+        "endStructure": "104",
+        "startPoint": [
+          2150200.0,
+          1380100.0,
+          99.0
+        ],
+        "endPoint": [
+          2150200.0,
+          1379900.0,
+          96.0
+        ],
+        "innerDiameter": 2.0,
+        "shape": "circular",
+        "material": "Reinforced Concrete",
+        "partFamily": "Concrete Pipe",
+        "partSize": "24 inch Concrete Pipe"
+      }
+    },
+    {
+      "handle": "114",
+      "kind": "pipe",
+      "class": "AeccDbPipe",
+      "name": "P-4",
+      "space": "model",
+      "layer": "C-STRM-PIPE",
+      "style": "1A1",
+      "pipe": {
+        "network": "100",
+        "startStructure": null,
+        "endStructure": "101",
+        "startPoint": [
+          2150000.0,
+          1380300.0,
+          102.0
+        ],
+        "endPoint": [
+          2150100.0,
+          1380200.0,
+          101.5
+        ],
+        "innerDiameter": 1.0,
+        "shape": "circular",
+        "material": "Reinforced Concrete",
+        "partFamily": "Concrete Pipe",
+        "partSize": "12 inch Concrete Pipe"
+      }
+    },
+    {
+      "handle": "120",
+      "kind": "label",
+      "class": "AeccDbPipeLabel",
+      "space": "model",
+      "layer": "C-STRM-LABL",
+      "style": "1A5",
+      "label": {
+        "annotates": "111",
+        "anchor": [
+          2150150.0,
+          1380150.0,
+          0.0
+        ],
+        "text": "18\" RCP @ 0.71%",
+        "textOverridden": false
+      }
+    },
+    {
+      "handle": "121",
+      "kind": "label",
+      "class": "AeccDbPipeLabel",
+      "space": "model",
+      "layer": "C-STRM-LABL",
+      "style": "1A5",
+      "label": {
+        "annotates": "113",
+        "anchor": [
+          2150200.0,
+          1380000.0,
+          0.0
+        ],
+        "text": "24\" HDPE @ 1.50%",
+        "textOverridden": true
+      }
+    }
+  ],
+  "xrefs": [
+    {
+      "handle": "1F0",
+      "blockName": "C-BASE",
+      "definition": "1F1",
+      "target": "C-BASE",
+      "attachment": "overlay",
+      "resolution": {
+        "savedPath": "C-BASE.dwg",
+        "resolvedPath": "C:\\Projects\\MiniSite\\Xref\\C-BASE.dwg",
+        "resolvedBy": "relative-to-host",
+        "status": "resolved"
+      },
+      "space": "model",
+      "layer": "C-XREF",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaleFactors": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "unitScale": 1.0,
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "styles": [
+    {
+      "handle": "1A1",
+      "name": "Storm Pipe - Plan",
+      "kind": "object",
+      "objectType": "pipe",
+      "components": [
+        {
+          "name": "Pipe Outline",
+          "view": "plan",
+          "visible": true,
+          "layer": "0"
+        },
+        {
+          "name": "Pipe Centerline",
+          "view": "plan",
+          "visible": false,
+          "layer": "0"
+        },
+        {
+          "name": "Pipe Outline",
+          "view": "profile",
+          "visible": true,
+          "layer": "0"
+        }
+      ]
+    },
+    {
+      "handle": "1A2",
+      "name": "Inlet - Plan",
+      "kind": "object",
+      "objectType": "structure",
+      "components": [
+        {
+          "name": "Structure",
+          "view": "plan",
+          "visible": true,
+          "layer": "C-STRM-STRC"
+        },
+        {
+          "name": "Structure",
+          "view": "profile",
+          "visible": true,
+          "layer": "0"
+        }
+      ]
+    },
+    {
+      "handle": "1A3",
+      "name": "Inlet Type C - Plan",
+      "kind": "object",
+      "objectType": "structure",
+      "components": [
+        {
+          "name": "Structure",
+          "view": "plan",
+          "visible": true,
+          "layer": "C-STRM-STRC-C"
+        },
+        {
+          "name": "Structure",
+          "view": "profile",
+          "visible": true,
+          "layer": "0"
+        }
+      ]
+    },
+    {
+      "handle": "1A4",
+      "name": "Manhole - Plan",
+      "kind": "object",
+      "objectType": "structure",
+      "components": [
+        {
+          "name": "Structure",
+          "view": "plan",
+          "visible": true,
+          "layer": "0"
+        },
+        {
+          "name": "Structure",
+          "view": "profile",
+          "visible": true,
+          "layer": "0"
+        }
+      ]
+    },
+    {
+      "handle": "1A5",
+      "name": "Pipe Size Material Slope",
+      "kind": "label",
+      "objectType": "pipe-label",
+      "components": [
+        {
+          "name": "Text",
+          "view": "plan",
+          "visible": true,
+          "layer": "C-STRM-LABL"
+        }
+      ]
+    }
+  ],
+  "layouts": []
+}

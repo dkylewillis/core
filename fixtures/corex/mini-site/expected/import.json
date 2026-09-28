@@ -1,0 +1,722 @@
+{
+  "description": "Expected canonical model facts for the mini-site fixture. Lists are exhaustive unless marked otherwise.",
+  "mappingProfile": "profiles/default.mapping-profile.json",
+  "aiEnabled": false,
+  "drawings": [
+    {
+      "id": "C301",
+      "linearUnits": "feet"
+    },
+    {
+      "id": "C501",
+      "linearUnits": "feet"
+    },
+    {
+      "id": "C-BASE",
+      "linearUnits": "feet"
+    },
+    {
+      "id": "SURVEY",
+      "linearUnits": "us-survey-feet"
+    },
+    {
+      "id": "C-STRM",
+      "linearUnits": "feet"
+    },
+    {
+      "id": "C-ALIGN",
+      "linearUnits": "feet"
+    }
+  ],
+  "xrefPaths": {
+    "description": "Every Xref path reachable from each sheet drawing. 'loaded' is false when AutoCAD would not load the instance through this path.",
+    "paths": [
+      {
+        "root": "C301",
+        "path": [
+          "C301",
+          "C-BASE"
+        ],
+        "instances": [
+          {
+            "drawing": "C301",
+            "handle": "5A0"
+          }
+        ],
+        "loaded": true,
+        "reason": null,
+        "worldTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "root": "C301",
+        "path": [
+          "C301",
+          "C-BASE",
+          "SURVEY"
+        ],
+        "instances": [
+          {
+            "drawing": "C301",
+            "handle": "5A0"
+          },
+          {
+            "drawing": "C-BASE",
+            "handle": "2C1"
+          }
+        ],
+        "loaded": true,
+        "reason": null,
+        "worldTransform": [
+          0.999963923,
+          -0.008726553,
+          0.0,
+          2145000.0,
+          0.008726553,
+          0.999963923,
+          0.0,
+          1375000.0,
+          0.0,
+          0.0,
+          1.000002,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "root": "C301",
+        "path": [
+          "C301",
+          "C-STRM"
+        ],
+        "instances": [
+          {
+            "drawing": "C301",
+            "handle": "5A1"
+          }
+        ],
+        "loaded": true,
+        "reason": null,
+        "worldTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "root": "C301",
+        "path": [
+          "C301",
+          "C-STRM",
+          "C-BASE"
+        ],
+        "instances": [
+          {
+            "drawing": "C301",
+            "handle": "5A1"
+          },
+          {
+            "drawing": "C-STRM",
+            "handle": "1F0"
+          }
+        ],
+        "loaded": false,
+        "reason": "overlay-not-nested",
+        "worldTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "root": "C301",
+        "path": [
+          "C301",
+          null
+        ],
+        "instances": [
+          {
+            "drawing": "C301",
+            "handle": "5A2"
+          }
+        ],
+        "loaded": false,
+        "reason": "not-found",
+        "worldTransform": null
+      }
+    ]
+  },
+  "dataReferences": [
+    {
+      "reference": {
+        "drawing": "C501",
+        "handle": "6A0"
+      },
+      "source": {
+        "drawing": "C-ALIGN",
+        "handle": "4A0"
+      },
+      "status": "current"
+    },
+    {
+      "reference": {
+        "drawing": "C501",
+        "handle": "6A1"
+      },
+      "source": {
+        "drawing": "C-ALIGN",
+        "handle": "4A1"
+      },
+      "status": "current"
+    },
+    {
+      "reference": {
+        "drawing": "C501",
+        "handle": "6B0"
+      },
+      "source": {
+        "drawing": "C-STRM",
+        "handle": "100"
+      },
+      "status": "current"
+    },
+    {
+      "reference": {
+        "drawing": "C501",
+        "handle": "6C0"
+      },
+      "source": null,
+      "status": "source-not-found"
+    }
+  ],
+  "designObjects": [
+    {
+      "type": "GravityNetwork",
+      "name": "STORM",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "100",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B0",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "classification": {
+        "property": "system",
+        "method": "rule",
+        "rule": "storm-by-name"
+      }
+    },
+    {
+      "type": "GravityStructure",
+      "name": "DI-1",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "101",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B1",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "rimElevationFt": 105.0,
+        "sumpElevationFt": 99.0,
+        "positionFt": [
+          2150100.0,
+          1380200.0
+        ],
+        "connectedPipeCount": 2
+      }
+    },
+    {
+      "type": "GravityStructure",
+      "name": "DI-2",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "102",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B2",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "rimElevationFt": 104.5,
+        "sumpElevationFt": 98.5,
+        "positionFt": [
+          2150300.0,
+          1380200.0
+        ],
+        "connectedPipeCount": 1
+      }
+    },
+    {
+      "type": "GravityStructure",
+      "name": "MH-1",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "103",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B3",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "rimElevationFt": 104.0,
+        "sumpElevationFt": 96.0,
+        "positionFt": [
+          2150200.0,
+          1380100.0
+        ],
+        "connectedPipeCount": 3
+      }
+    },
+    {
+      "type": "GravityStructure",
+      "name": "OUT-1",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "104",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B4",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "rimElevationFt": 100.0,
+        "sumpElevationFt": 94.0,
+        "positionFt": [
+          2150200.0,
+          1379900.0
+        ],
+        "connectedPipeCount": 1
+      }
+    },
+    {
+      "type": "GravityStructure",
+      "name": "DI-3",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "105",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B5",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "rimElevationFt": 103.0,
+        "sumpElevationFt": 99.0,
+        "positionFt": [
+          2150400.0,
+          1380000.0
+        ],
+        "connectedPipeCount": 0
+      }
+    },
+    {
+      "type": "GravityPipe",
+      "name": "P-1",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "111",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B6",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "innerDiameterIn": 18.0,
+        "material": "Reinforced Concrete",
+        "startInvertFt": 100.0,
+        "endInvertFt": 99.0,
+        "length2dFt": 141.421356,
+        "slopePercent": 0.707107
+      }
+    },
+    {
+      "type": "GravityPipe",
+      "name": "P-2",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "112",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B7",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "innerDiameterIn": 24.0,
+        "material": "Reinforced Concrete",
+        "startInvertFt": 99.5,
+        "endInvertFt": 98.5,
+        "length2dFt": 141.421356,
+        "slopePercent": 0.707107
+      }
+    },
+    {
+      "type": "GravityPipe",
+      "name": "P-3",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "113",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B8",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "innerDiameterIn": 24.0,
+        "material": "Reinforced Concrete",
+        "startInvertFt": 98.0,
+        "endInvertFt": 95.0,
+        "length2dFt": 200.0,
+        "slopePercent": 1.5
+      }
+    },
+    {
+      "type": "GravityPipe",
+      "name": "P-4",
+      "system": "storm",
+      "mappedFrom": [
+        {
+          "drawing": "C-STRM",
+          "handle": "114",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6B9",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "innerDiameterIn": 12.0,
+        "material": "Reinforced Concrete",
+        "startInvertFt": 101.5,
+        "endInvertFt": 101.0,
+        "length2dFt": 141.421356,
+        "slopePercent": 0.353553
+      }
+    },
+    {
+      "type": "Alignment",
+      "name": "SW-A",
+      "mappedFrom": [
+        {
+          "drawing": "C-ALIGN",
+          "handle": "4A0",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6A0",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "lengthFt": 341.421356
+      }
+    },
+    {
+      "type": "Profile",
+      "name": "SW-A FG",
+      "mappedFrom": [
+        {
+          "drawing": "C-ALIGN",
+          "handle": "4A1",
+          "method": "native"
+        },
+        {
+          "drawing": "C501",
+          "handle": "6A1",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ]
+    },
+    {
+      "type": "Surface",
+      "name": "EG",
+      "mappedFrom": [
+        {
+          "drawing": "C501",
+          "handle": "6C0",
+          "method": "native",
+          "via": "data-reference"
+        }
+      ],
+      "properties": {
+        "sourceMissing": true
+      }
+    }
+  ],
+  "validation": {
+    "description": "Import succeeds; these warnings are recorded in the snapshot. No errors are expected.",
+    "errors": [],
+    "warnings": [
+      {
+        "code": "xref-unresolved",
+        "subject": {
+          "drawing": "C301",
+          "handle": "5A2"
+        }
+      },
+      {
+        "code": "data-reference-source-missing",
+        "subject": {
+          "drawing": "C501",
+          "handle": "6C0"
+        }
+      },
+      {
+        "code": "mixed-units-in-xref-chain",
+        "subject": {
+          "drawing": "C-BASE",
+          "handle": "2C1"
+        },
+        "detail": "SURVEY is us-survey-feet; host C-BASE is feet; unitScale 1.000002000004"
+      }
+    ]
+  },
+  "geometryChecks": {
+    "tolerance": 1e-06,
+    "worldPoints": [
+      {
+        "description": "SURVEY baseline start in project/world space via C301 > C-BASE > SURVEY",
+        "entity": {
+          "drawing": "SURVEY",
+          "handle": "3A0"
+        },
+        "path": [
+          "C301",
+          "C-BASE",
+          "SURVEY"
+        ],
+        "sourcePoint": [
+          5000.0,
+          5000.0,
+          0.0
+        ],
+        "world": [
+          2149956.18685,
+          1380043.45238,
+          0.0
+        ]
+      },
+      {
+        "description": "SURVEY baseline end",
+        "entity": {
+          "drawing": "SURVEY",
+          "handle": "3A0"
+        },
+        "path": [
+          "C301",
+          "C-BASE",
+          "SURVEY"
+        ],
+        "sourcePoint": [
+          5200.0,
+          5000.0,
+          0.0
+        ],
+        "world": [
+          2150156.179635,
+          1380045.19769,
+          0.0
+        ]
+      },
+      {
+        "description": "Hydrant circle center via block reference C-BASE:2A1",
+        "entity": {
+          "drawing": "C-BASE",
+          "handle": "2B1"
+        },
+        "path": [
+          "C301",
+          "C-BASE"
+        ],
+        "blockPath": [
+          {
+            "drawing": "C-BASE",
+            "handle": "2A1"
+          }
+        ],
+        "sourcePoint": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "world": [
+          2150350.0,
+          1380250.0,
+          0.0
+        ]
+      }
+    ],
+    "profileViewPoints": [
+      {
+        "description": "P-1 downstream centerline at MH-1",
+        "profileView": {
+          "drawing": "C501",
+          "handle": "6D0"
+        },
+        "station": 141.421356,
+        "elevation": 99.75,
+        "model": [
+          2151141.421356,
+          1379097.5
+        ]
+      }
+    ],
+    "viewportFootprints": [
+      {
+        "viewport": {
+          "drawing": "C301",
+          "handle": "5E1"
+        },
+        "world": [
+          [
+            2149600.0,
+            1379700.0
+          ],
+          [
+            2150800.0,
+            1379700.0
+          ],
+          [
+            2150800.0,
+            1380500.0
+          ],
+          [
+            2149600.0,
+            1380500.0
+          ]
+        ]
+      },
+      {
+        "viewport": {
+          "drawing": "C501",
+          "handle": "6E2"
+        },
+        "world": [
+          [
+            2150570.710678,
+            1378700.0
+          ],
+          [
+            2151770.710678,
+            1378700.0
+          ],
+          [
+            2151770.710678,
+            1379500.0
+          ],
+          [
+            2150570.710678,
+            1379500.0
+          ]
+        ]
+      }
+    ]
+  }
+}

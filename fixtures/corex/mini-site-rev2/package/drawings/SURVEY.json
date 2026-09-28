@@ -1,0 +1,73 @@
+{
+  "schema": "corex.drawing/1",
+  "id": "SURVEY",
+  "file": {
+    "sourcePath": "C:\\Projects\\MiniSite\\Survey\\SURVEY.dwg",
+    "sizeBytes": 1000000,
+    "sha256": "c20893becff8edda10471cb921f973c09057730c5affd960fdc409434f17547a",
+    "lastSaved": "2026-09-20T15:00:00Z"
+  },
+  "fingerprintGuid": "6a231dd7-cf62-527e-9d6a-338f80edb0b4",
+  "versionGuid": "8a14a4f3-8983-5167-a469-2ca7af91cc82",
+  "savedBy": {
+    "product": "Civil 3D",
+    "version": "2026"
+  },
+  "units": {
+    "insunits": 21,
+    "linear": "us-survey-feet"
+  },
+  "settings": {
+    "visretain": true
+  },
+  "civil": {
+    "coordinateSystemCode": null,
+    "drawingScale": null,
+    "gridToGroundScale": null
+  },
+  "layers": [
+    {
+      "name": "0",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "V-CTRL",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    }
+  ],
+  "blockDefinitions": [],
+  "entities": [
+    {
+      "handle": "3A0",
+      "kind": "line",
+      "class": "AcDbLine",
+      "name": "BASELINE",
+      "space": "model",
+      "layer": "V-CTRL",
+      "geometry": {
+        "type": "line",
+        "start": [
+          5000.0,
+          5000.0,
+          0.0
+        ],
+        "end": [
+          5200.0,
+          5000.0,
+          0.0
+        ]
+      }
+    }
+  ],
+  "xrefs": [],
+  "styles": [],
+  "layouts": []
+}

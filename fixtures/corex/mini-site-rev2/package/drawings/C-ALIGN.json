@@ -1,0 +1,128 @@
+{
+  "schema": "corex.drawing/1",
+  "id": "C-ALIGN",
+  "file": {
+    "sourcePath": "C:\\Projects\\MiniSite\\Xref\\C-ALIGN.dwg",
+    "sizeBytes": 1000000,
+    "sha256": "65f0392525304742ebaae25585bf4a17cc5b22025794d7a14d19b8f49ac4b821",
+    "lastSaved": "2026-09-20T15:00:00Z"
+  },
+  "fingerprintGuid": "f2e09771-1ff4-5161-9ceb-0ccef03fdc7d",
+  "versionGuid": "6a1d7df5-6a4d-5338-b345-4a92910b8888",
+  "savedBy": {
+    "product": "Civil 3D",
+    "version": "2026"
+  },
+  "units": {
+    "insunits": 2,
+    "linear": "feet"
+  },
+  "settings": {
+    "visretain": true
+  },
+  "civil": {
+    "coordinateSystemCode": "GA83-WF",
+    "drawingScale": 40.0,
+    "gridToGroundScale": null
+  },
+  "layers": [
+    {
+      "name": "0",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ROAD-CNTR",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    },
+    {
+      "name": "C-ROAD-PROF",
+      "on": true,
+      "frozen": false,
+      "locked": false,
+      "plot": true,
+      "dependentXref": null
+    }
+  ],
+  "blockDefinitions": [],
+  "entities": [
+    {
+      "handle": "4A0",
+      "kind": "alignment",
+      "class": "AeccDbAlignment",
+      "name": "SW-A",
+      "space": "model",
+      "layer": "C-ROAD-CNTR",
+      "alignment": {
+        "startStation": 0.0,
+        "segments": [
+          {
+            "type": "line",
+            "start": [
+              2150100.0,
+              1380200.0
+            ],
+            "end": [
+              2150200.0,
+              1380100.0
+            ],
+            "startStation": 0.0,
+            "length": 141.4213562373095
+          },
+          {
+            "type": "line",
+            "start": [
+              2150200.0,
+              1380100.0
+            ],
+            "end": [
+              2150200.0,
+              1379900.0
+            ],
+            "startStation": 141.4213562373095,
+            "length": 200.0
+          }
+        ]
+      }
+    },
+    {
+      "handle": "4A1",
+      "kind": "profile",
+      "class": "AeccDbVAlignment",
+      "name": "SW-A FG",
+      "space": "model",
+      "layer": "C-ROAD-PROF",
+      "profile": {
+        "alignment": "4A0",
+        "profileType": "layout",
+        "pvis": [
+          {
+            "station": 0.0,
+            "elevation": 105.0,
+            "curveLength": 0.0
+          },
+          {
+            "station": 141.4213562373095,
+            "elevation": 104.0,
+            "curveLength": 0.0
+          },
+          {
+            "station": 341.4213562373095,
+            "elevation": 100.0,
+            "curveLength": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "xrefs": [],
+  "styles": [],
+  "layouts": []
+}

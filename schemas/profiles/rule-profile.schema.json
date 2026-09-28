@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CORE rule profile",
+  "description": "Named rule parameters for a project or jurisdiction. A rule run records the profile's SHA-256.",
+  "type": "object",
+  "required": ["schema", "name", "source", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "core.rule-profile/1" },
+    "name": { "type": "string" },
+    "source": {
+      "description": "Standard or document the parameters come from.",
+      "type": "string"
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "core.source-reference": {
+          "type": "object",
+          "required": ["enabled", "params"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "params": {
+              "type": "object",
+              "required": ["reportFallbackResolution", "unloadedXref"],
+              "additionalProperties": false,
+              "properties": {
+                "reportFallbackResolution": { "type": "boolean" },
+                "unloadedXref": { "enum": ["finding", "observation", "ignore"] }
+              }
+            }
+          }
+        },
+        "core.network-connectivity": {
+          "type": "object",
+          "required": ["enabled", "params"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "params": {
+              "type": "object",
+              "required": ["reportStructuresWithoutPipes"],
+              "additionalProperties": false,
+              "properties": {
+                "reportStructuresWithoutPipes": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        "core.sheet-coverage": {
+          "type": "object",
+          "required": ["enabled", "params"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "params": {
+              "type": "object",
+              "required": ["objectTypes", "useViewFrames"],
+              "additionalProperties": false,
+              "properties": {
+                "objectTypes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+                "useViewFrames": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        "core.annotation-vs-model": {
+          "type": "object",
+          "required": ["enabled", "params"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "params": {
+              "type": "object",
+              "required": ["linkTolerancePaper", "linkToleranceModelFt", "diameterToleranceIn", "lengthToleranceFt", "materialCodes"],
+              "additionalProperties": false,
+              "properties": {
+                "linkTolerancePaper": { "type": "number", "exclusiveMinimum": 0 },
+                "linkToleranceModelFt": { "type": "number", "exclusiveMinimum": 0 },
+                "diameterToleranceIn": { "type": "number", "minimum": 0 },
+                "lengthToleranceFt": { "type": "number", "minimum": 0 },
+                "materialCodes": {
+                  "type": "object",
+                  "additionalProperties": { "type": "string", "pattern": "^[A-Z]+$" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

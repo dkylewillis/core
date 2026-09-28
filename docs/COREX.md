@@ -208,18 +208,43 @@ SmithFarm.corex
 |-- sheets/
 |   `-- sheets.json
 |
-|-- styles/
-|   `-- styles.json
-|
 `-- geometry/
     |-- EG.*
     |-- FG.*
     `-- ...
 ```
 
+Styles, layers, block definitions, layouts, and viewports belong to a drawing and are recorded in that drawing's file.
+
+The package is a zip archive (deflate) of this layout. Readers also accept the unpacked directory, which is how test fixtures are stored.
+
 The manifest records the COREX schema version, exporter version, Civil 3D and AutoCAD versions used for export, export time, the drawing list with checksums and fingerprint GUIDs, and the dependency graph.
 
-JSON is appropriate for metadata, object properties, relationships, layers, Xrefs, data shortcuts, layouts, viewports, styles, and Civil 3D attributes. Large geometry, such as TIN surfaces, dense meshes, and large point collections, should use an efficient binary representation referenced by JSON records. The particular binary format remains an implementation decision, but coordinates must be 64-bit floats or stored relative to a recorded local origin.
+JSON is appropriate for metadata, object properties, relationships, layers, Xrefs, data shortcuts, layouts, viewports, styles, and Civil 3D attributes. Large geometry, such as TIN surfaces, dense meshes, and large point collections, should use an efficient binary representation referenced by JSON records. Small geometry may be written inline as JSON. Coordinates must be 64-bit floats or stored relative to a recorded local origin.
+
+### Binary geometry (CXB1)
+
+Binary geometry files use the `CXB1` format. All values are little-endian.
+
+| Offset | Type | Field |
+| --- | --- | --- |
+| 0 | 4 bytes | Magic `CXB1` |
+| 4 | uint32 | Format version (`1`) |
+| 8 | uint32 | Kind: `1` = TIN, `2` = point cloud, `3` = polyface mesh |
+| 12 | uint32 | Flags (reserved, `0`) |
+| 16 | float64 × 3 | Local origin; stored coordinates are relative to it |
+| 40 | uint64 | Vertex count *V* |
+| 48 | uint64 | Face count *F* (`0` for point clouds) |
+| 56 | float64 × 3*V* | Vertex coordinates (x, y, z) |
+| … | uint32 × 3*F* | Triangle vertex indices (TIN and mesh) |
+
+The referencing JSON record carries the file's SHA-256 so corruption is detected on import.
+
+## Schemas and fixtures
+
+The normative definition of COREX is the JSON Schema set in [`schemas/corex/`](../schemas/corex/). This document explains intent; where it and the schemas disagree, the schemas win and this document is corrected.
+
+A complete example package with expected import and review results is in [`fixtures/corex/mini-site/`](../fixtures/corex/mini-site/).
 
 ## COREX is not the canonical model
 
@@ -233,7 +258,7 @@ Name: P-12
 Diameter: 2.0 drawing units (ft)
 
 CORE
-DesignObject: StormPipe
+DesignObject: GravityPipe (system: storm, by rule)
 Name: P-12
 Diameter: 24 in
 ```
@@ -246,7 +271,7 @@ DesignObject creation follows this priority:
 2. Rule-based interpretation
 3. AI-assisted interpretation only when necessary
 
-For example, a Civil 3D pipe can deterministically become a `StormPipe` DesignObject without AI.
+For example, a Civil 3D pipe deterministically becomes a `GravityPipe` DesignObject without AI. Whether that pipe is storm or sanitary is not something Civil 3D records, so the system is classified by an explicit rule (for example, on network name) with a `rule` method.
 
 A data-shortcut reference to a pipe network does not create a second network. The importer maps the reference and the source object to the same DesignObject and records the reference relationship.
 
@@ -262,7 +287,7 @@ Civil 3D's native LandXML export (surfaces, alignments, profiles, and pipe netwo
 
 The exporter runs inside Autodesk software; its runtime constraints are recorded in [ADR-011](adr/ADR-011-exporter-runtime.md). In summary:
 
-- AutoCAD and Civil 3D 2025 and later use .NET 8; 2024 and earlier use .NET Framework 4.8. Supporting both requires separate exporter builds.
+- Civil 3D 2025 and 2026 use .NET 8, Civil 3D 2027 uses .NET 10, and 2024 and earlier use .NET Framework 4.8. The exporter multi-targets the runtimes it supports.
 - Each drawing is extracted from its own database, because Civil 3D objects inside an Xref cannot be queried through the host drawing.
 - Batch export without the full user interface may use the AutoCAD Core Console with Civil 3D loaded (`accoreconsole.exe /product C3D`).
 - Which Civil 3D APIs behave correctly on side databases versus open documents must be confirmed on a representative project before discovery and extraction designs are finalized.
