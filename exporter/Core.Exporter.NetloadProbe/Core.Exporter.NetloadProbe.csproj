@@ -6,37 +6,29 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>Core.Exporter.Civil3D</RootNamespace>
-    <AssemblyName>Core.Exporter.Civil3D</AssemblyName>
+    <RootNamespace>Core.Exporter.NetloadProbe</RootNamespace>
+    <AssemblyName>Core.Exporter.NetloadProbe</AssemblyName>
     <PlatformTarget>x64</PlatformTarget>
-    <!-- Host process supplies Autodesk assemblies; do not publish a RID-specific folder. -->
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <!-- Autodesk templates: avoid TargetFrameworkAttribute conflicts with the host process. -->
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    <!-- Plugin loaded into Civil 3D via NETLOAD: emit deps.json + runtimeconfig and copy lockfile deps. -->
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <!-- Explicit for clarity; also implied by EnableDynamicLoading. -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <!-- Do not produce a reference assembly that Autodesk loaders can confuse with the implementation DLL. -->
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
   </PropertyGroup>
 
-  <!-- Autodesk .NET 8+ plugins need the Windows Desktop shared framework (WPF/WinForms types). -->
   <ItemGroup>
     <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
   </ItemGroup>
 
-  <!-- Civil 3D 2026 (also loads in 2025): .NET 8 — ADR-011 -->
+  <!-- AutoCAD-only diagnostic probe — no Civil3D.NET. If this NETLOADs but
+       Core.Exporter.Civil3D does not, Civil assembly resolution is the failure. -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
     <PackageReference Include="AutoCAD.NET" Version="25.1.0" ExcludeAssets="runtime" />
-    <PackageReference Include="Civil3D.NET" Version="13.8.1516" ExcludeAssets="runtime" />
   </ItemGroup>
 
-  <!-- Civil 3D 2027: .NET 10 — ADR-011 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-windows'">
     <PackageReference Include="AutoCAD.NET" Version="26.0.0" ExcludeAssets="runtime" />
-    <PackageReference Include="Civil3D.NET" Version="13.9.628" ExcludeAssets="runtime" />
   </ItemGroup>
 
 </Project>
