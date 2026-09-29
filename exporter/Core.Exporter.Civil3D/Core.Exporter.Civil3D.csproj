@@ -11,7 +11,14 @@
     <PlatformTarget>x64</PlatformTarget>
     <!-- Host process supplies Autodesk assemblies; do not publish a RID-specific folder. -->
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <!-- Copy transitive deps next to the plugin DLL for NETLOAD (not Autodesk host assemblies). -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
+
+  <!-- Autodesk .NET 8+ plugins need the Windows Desktop shared framework (WPF/WinForms types). -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>
 
   <!-- Civil 3D 2026 (also loads in 2025): .NET 8 — ADR-011 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
