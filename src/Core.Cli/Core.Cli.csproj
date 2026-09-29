@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Corex\Core.Corex.csproj" />
+    <ProjectReference Include="..\Core.Import\Core.Import.csproj" />
+    <ProjectReference Include="..\Core.Store\Core.Store.csproj" />
+    <ProjectReference Include="..\Core.Rules\Core.Rules.csproj" />
+    <ProjectReference Include="..\Core.Report\Core.Report.csproj" />
+    <ProjectReference Include="..\Core.Model\Core.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+      <AssemblyName>core</AssemblyName>
+    <RootNamespace>Core.Cli</RootNamespace>
+  </PropertyGroup>
+
+</Project>

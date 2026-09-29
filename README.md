@@ -37,7 +37,7 @@ CORE is Civil 3D-first, but its canonical model is source-independent. The syste
 - [COREX JSON Schemas](schemas/corex/), [SQLite schemas](schemas/core/), and [profiles](profiles/)
 - [Fixtures](fixtures/corex/) — [mini-site](fixtures/corex/mini-site/) and [mini-site-rev2](fixtures/corex/mini-site-rev2/) with expected results
 
-Validate schemas, fixtures, and profiles with `./scripts/validate.sh`.
+Validate schemas, fixtures, and profiles with `./scripts/validate.sh`. After the solution scaffold: `dotnet build` and `dotnet test`.
 
 The Civil 3D exporter plugin lives under [`exporter/`](exporter/README.md). It multi-targets `net8.0-windows` and `net10.0-windows` and compiles against Autodesk NuGet reference assemblies (runs only on Windows with Civil 3D).
 
@@ -56,4 +56,4 @@ AI inference is disabled for the first build.
 
 ## Status
 
-This repository is a design baseline with the contracts and acceptance fixtures for the first build. Implementation starts with task T1 in the [build plan](docs/BUILD_PLAN.md) once [ADR-012](docs/adr/ADR-012-implementation-stack.md) and [ADR-013](docs/adr/ADR-013-first-review-interface.md) are approved.
+The first-build engine (T1–T16) lives under `src/` with tests in `tests/`. Build with `dotnet build` / `dotnet test` (.NET 10 SDK). The Civil 3D exporter scaffold is under `exporter/` (T17 remains future work). ADR-012 and ADR-013 are Accepted.

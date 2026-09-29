@@ -2,5 +2,10 @@
   <PropertyGroup>
     <!-- Allows net*-windows TFMs to restore and compile on Linux (ADR-011). -->
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+      <NoWarn>$(NoWarn);NU1903</NoWarn>
   </PropertyGroup>
 </Project>

@@ -3,21 +3,39 @@
   "title": "COREX sheets",
   "description": "Logical construction sheets and the layouts that produce them.",
   "type": "object",
-  "required": ["schema", "sheetSet", "sheets"],
+  "required": [
+    "schema",
+    "sheetSet",
+    "sheets"
+  ],
   "additionalProperties": false,
   "properties": {
-    "schema": { "const": "corex.sheets/1" },
+    "schema": {
+      "const": "corex.sheets/1"
+    },
     "sheetSet": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
-          "required": ["name", "path", "sha256"],
+          "required": [
+            "name",
+            "path",
+            "sha256"
+          ],
           "additionalProperties": false,
           "properties": {
-            "name": { "type": "string" },
-            "path": { "type": "string" },
-            "sha256": { "$ref": "common.schema.json#/$defs/sha256" }
+            "name": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "$ref": "common.schema.json#/$defs/sha256"
+            }
           }
         }
       ]
@@ -26,17 +44,39 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["number", "title", "drawing", "layout", "source"],
+        "required": [
+          "number",
+          "title",
+          "drawing",
+          "layout",
+          "source"
+        ],
         "additionalProperties": false,
         "properties": {
-          "number": { "type": "string" },
-          "title": { "type": "string" },
-          "revision": { "type": ["string", "null"] },
-          "drawing": { "$ref": "common.schema.json#/$defs/drawingId" },
-          "layout": { "$ref": "common.schema.json#/$defs/handle" },
+          "number": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "revision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "drawing": {
+            "$ref": "common.schema.json#/$defs/drawingId"
+          },
+          "layout": {
+            "$ref": "common.schema.json#/$defs/handle"
+          },
           "source": {
             "description": "Where the sheet number and title came from.",
-            "enum": ["sheet-set", "title-block"]
+            "enum": [
+              "sheet-set",
+              "title-block"
+            ]
           }
         }
       }

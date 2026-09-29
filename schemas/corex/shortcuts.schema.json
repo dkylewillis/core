@@ -3,40 +3,96 @@
   "title": "COREX data shortcuts",
   "description": "Data shortcuts published in the project's _Shortcuts folder.",
   "type": "object",
-  "required": ["schema", "folder", "shortcuts"],
+  "required": [
+    "schema",
+    "folder",
+    "shortcuts"
+  ],
   "additionalProperties": false,
   "properties": {
-    "schema": { "const": "corex.shortcuts/1" },
+    "schema": {
+      "const": "corex.shortcuts/1"
+    },
     "folder": {
       "type": "object",
-      "required": ["path", "exists"],
+      "required": [
+        "path",
+        "exists"
+      ],
       "additionalProperties": false,
       "properties": {
-        "path": { "type": "string" },
-        "exists": { "type": "boolean" }
+        "path": {
+          "type": "string"
+        },
+        "exists": {
+          "type": "boolean"
+        }
       }
     },
     "shortcuts": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "objectType", "sourcePath", "sourceDrawing", "sourceHandle", "status"],
+        "required": [
+          "name",
+          "objectType",
+          "sourcePath",
+          "sourceDrawing",
+          "sourceHandle",
+          "status"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "objectType": {
-            "enum": ["alignment", "profile", "surface", "pipe-network", "pressure-network", "corridor", "sample-line-group", "view-frame-group", "other"]
+          "name": {
+            "type": "string"
           },
-          "shortcutFile": { "type": "string" },
-          "sourcePath": { "type": "string" },
+          "objectType": {
+            "enum": [
+              "alignment",
+              "profile",
+              "surface",
+              "pipe-network",
+              "pressure-network",
+              "corridor",
+              "sample-line-group",
+              "view-frame-group",
+              "other"
+            ]
+          },
+          "shortcutFile": {
+            "type": "string"
+          },
+          "sourcePath": {
+            "type": "string"
+          },
           "sourceDrawing": {
             "description": "Package drawing id of the source; null when the source drawing was not found or not exported.",
-            "oneOf": [{ "$ref": "common.schema.json#/$defs/drawingId" }, { "type": "null" }]
+            "oneOf": [
+              {
+                "$ref": "common.schema.json#/$defs/drawingId"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "sourceHandle": {
-            "oneOf": [{ "$ref": "common.schema.json#/$defs/handle" }, { "type": "null" }]
+            "oneOf": [
+              {
+                "$ref": "common.schema.json#/$defs/handle"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
-          "status": { "enum": ["valid", "source-not-found", "object-not-found"] }
+          "status": {
+            "enum": [
+              "valid",
+              "source-not-found",
+              "object-not-found"
+            ]
+          }
         }
       }
     }

@@ -1,6 +1,6 @@
 # ADR-012: Implementation Stack
 
-- Status: Proposed — awaiting owner approval
+- Status: Accepted
 - Date: 2026-09-27
 
 ## Context
